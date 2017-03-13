@@ -5,7 +5,7 @@
 ![how to create a branch](./creatbranch.PNG)
 
 ####进入某个文件目录,clone远程代码:
->cd <one select path>    //你想把项目放置的文件夹
+>cd one_selected_path    //你想把项目放置的文件夹
 
 >git clone git@github.com:SEForMedProject/project.git
 
