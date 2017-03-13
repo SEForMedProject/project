@@ -2,4 +2,4 @@
 2.resources中static放js，templates放html
 3.项目启动为MedProjectApplication,配置在application.yml,注意设置端口,配置好sql的用户名密码（和本地一样）
 4.sql文件在sqlbackup文件夹下，需要建立sql才能启动项目
-heyang
+heyangsadasdsadas
