@@ -1,3 +1,8 @@
+##初始化帮助文档：
+
+在项目下创建自己的分支:
+![how to create a branch](./create.png)
+
 进入某个文件目录:
 git clone git@github.com:SEForMedProject/project.git
 cd project //进入项目
