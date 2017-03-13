@@ -29,7 +29,10 @@
 
 写好代码之后在项目根目录
 > git add -A    //信息加到索引库 
+
 > git commit -m "your message"   //依据索引库中的内容来进行提交
+
 > git pull   //拉
+
 > git push   //提交远程
 
