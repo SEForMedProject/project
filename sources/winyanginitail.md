@@ -15,7 +15,7 @@
 >git checkout --track origin/<你的分支名>
 
 ####第一次推代码到分支
->git push -u origin <你的分支名> //第一次需要设置，后面不需要，如果遇到问题(ssh key问题),那么可以修改根目录下 .git/config 文件 把对应位置做如下更改
+>git push -u origin <你的分支名> //第一次需要设置，后面不需要，如果遇到问题(ssh key问题),那么可以修改项目根目录下 .git/config 文件 把对应位置做如下更改
 
 >git协议改为https协议:
 <pre><code>
