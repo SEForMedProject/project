@@ -1,6 +1,6 @@
 package com.medical.service.impl;
 
-import com.medical.dao.DoctorDao;
+import com.medical.Repository.DoctorRepository;
 import com.medical.model.Doctor;
 import com.medical.model.jpa.JPADoctor;
 import com.medical.service.DoctorService;
@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class DoctorServiceImpl implements DoctorService{
     @Autowired
-    private transient DoctorDao doctorDao;
+    private transient DoctorRepository doctorRepository;
 
     @Override
     public Response<Doctor> getDoctorByName(String doctorName){
         Response<Doctor> response=new Response<Doctor>();
         try{
-            JPADoctor jpaDoctor=doctorDao.getDoctorByName(doctorName);
+            JPADoctor jpaDoctor= doctorRepository.getDoctorByName(doctorName);
             if(jpaDoctor==null){
                 response.setStatus(ResponseStatus.FAIL);
                 response.setMessage("未找到该医生");
