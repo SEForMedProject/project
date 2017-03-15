@@ -1,6 +1,6 @@
 package com.medical.service.impl;
 
-import com.medical.Repository.DiseaseRepository;
+import com.medical.repository.DiseaseRepository;
 import com.medical.model.Disease;
 import com.medical.model.jpa.JPADisease;
 import com.medical.service.DiseaseService;

@@ -23,6 +23,7 @@ app.controller("indexCtrl", ["$scope","indexService",
             console.log("init success");
         }
 
+        //搜索
         $scope.search = function(){
             var params={
                 diseaseName:$scope.diseaseName
@@ -32,5 +33,10 @@ app.controller("indexCtrl", ["$scope","indexService",
             },function(error){
                 console.log(error.message);
             });
+        }
+
+        //跳转到疾病页面
+        $scope.toDisease=function(index){
+            window.location=("../disease?diseaseId="+$scope.diseaseList[index].diseaseId);
         }
     }]);
