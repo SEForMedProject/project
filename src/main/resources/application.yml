@@ -3,9 +3,15 @@ server:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/med_project?createDatabaseIfNotExist=true&amp;characterEncoding=utf-8
     username: root
     password: 605160
+=======
+    url: jdbc:mysql://172.20.45.88:3306/db_qiuyi?characterEncoding=utf-8
+    username: medicalteam
+    password: medicalteam_2017
+>>>>>>> dev
     #数据库连接池配置
     max-active: 200
     max-idle: 100
