@@ -14,4 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DefaultController {
     @RequestMapping(value = "/")
     public String defaultPage(Model model) {return "index";}
+    @RequestMapping(value="/disease")
+    public String diseasePage(Model model) {return "disease";}
 }

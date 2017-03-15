@@ -1,4 +1,4 @@
-package com.medical.Repository;
+package com.medical.repository;
 
 import com.medical.model.jpa.JPADisease;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
 package com.medical.service.impl;
 
-import com.medical.Repository.DoctorRepository;
+import com.medical.repository.DoctorRepository;
 import com.medical.model.Doctor;
 import com.medical.model.jpa.JPADoctor;
 import com.medical.service.DoctorService;
