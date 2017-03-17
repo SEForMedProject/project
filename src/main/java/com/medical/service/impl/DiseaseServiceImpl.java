@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,31 +29,34 @@ public class DiseaseServiceImpl implements DiseaseService{
             return response;
         }
         try{
-            List<JPADisease> jpaDiseaseList = diseaseRepository.findContaining(diseaseName);
-            if(jpaDiseaseList.size()==0){
+            List<JPADisease> jpaDiseaseList1 = diseaseRepository.findByNameContaining(diseaseName);
+            List<JPADisease> jpaDiseaseList2 = diseaseRepository.findBySymptomContaining(diseaseName);
+            if(jpaDiseaseList1.size()+jpaDiseaseList2.size()==0){
                 response.setStatus(ResponseStatus.FAIL);
                 response.setMessage("无该疾病");
                 return response;
             }
+            HashMap<Integer,Integer> hasFlag=new HashMap<>();
             List<DiseaseForSearch> diseaseForSearches =new ArrayList<>();
-            for(JPADisease jpaDisease : jpaDiseaseList){
+            for(JPADisease jpaDisease : jpaDiseaseList1){
                 DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
                 diseaseForSearch.setDiseaseId(jpaDisease.getId());
                 diseaseForSearch.setDiseaseName(jpaDisease.getName());
-                if(jpaDisease.getName().contains(diseaseName)){
-                    diseaseForSearch.setShowDetail(jpaDisease.getName());
-                    diseaseForSearch.setTag("疾病");
-                }else if(jpaDisease.getSymptom().contains(diseaseName)){
+                diseaseForSearch.setShowDetail(jpaDisease.getName());
+                diseaseForSearch.setTag("疾病");
+                hasFlag.put(jpaDisease.getId(),1);
+                diseaseForSearches.add(diseaseForSearch);
+            }
+            for(JPADisease jpaDisease:jpaDiseaseList2){
+                if(!hasFlag.containsKey(jpaDisease.getId())){
+                    DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
+                    diseaseForSearch.setDiseaseId(jpaDisease.getId());
+                    diseaseForSearch.setDiseaseName(jpaDisease.getName());
                     diseaseForSearch.setShowDetail(jpaDisease.getSymptom()+"("+jpaDisease.getName()+")");
                     diseaseForSearch.setTag("症状");
-                }else if(jpaDisease.getBody_part().contains(diseaseName)){
-                    diseaseForSearch.setShowDetail(jpaDisease.getBody_part()+"("+jpaDisease.getName()+")");
-                    diseaseForSearch.setTag("身体部位");
-                }else{
-                    diseaseForSearch.setShowDetail(jpaDisease.getName());
-                    diseaseForSearch.setTag("未知");
+                    hasFlag.put(jpaDisease.getId(),1);
+                    diseaseForSearches.add(diseaseForSearch);
                 }
-                diseaseForSearches.add(diseaseForSearch);
             }
             response.setData(diseaseForSearches);
             response.setStatus(ResponseStatus.SUCCESS);
