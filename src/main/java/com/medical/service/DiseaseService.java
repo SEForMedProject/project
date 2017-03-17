@@ -1,6 +1,6 @@
 package com.medical.service;
 
-import com.medical.model.Disease;
+import com.medical.model.DiseaseForSearch;
 import com.medical.util.Response;
 
 import java.util.List;
@@ -10,5 +10,5 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public interface DiseaseService {
-    Response<List<Disease>> getDiseaseByName(String diseaseName);
+    Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName);
 }

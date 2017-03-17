@@ -138,8 +138,8 @@
 									</span>
                             </div>
                             <div class="list-group" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
-                                <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.diseaseName}}
-                                    <span class="badge">疾病</span>
+                                <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
+                                    <span class="badge">{{item.tag}}</span>
                                 </a>
                             </div>
                             <input type="hidden" name="route" value="product/search"/>
