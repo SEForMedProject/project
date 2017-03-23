@@ -16,6 +16,11 @@ app.factory("diseaseService",["$resource",
                     method:"GET",
                     url:"/search/getDiseaseByName/",
                     isArray:false
+                },
+                getDiseaseDetailById:{
+                    method:"GET",
+                    url:"/disease/getDiseaseDetailById/",
+                    isArray:false
                 }
             }
         )
@@ -40,7 +45,16 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
         $scope.init = function () {
             var request = GetRequest();
             $scope.diseaseId=request["diseaseId"];
-            console.log($scope.diseaseId);
+            var params={
+                diseaseId:$scope.diseaseId
+            };
+            diseaseService.getDiseaseDetailById(params).$promise.then(function (response) {
+                $scope.diseaseDetail=response.data;
+            },function(error){
+                console.log(error.message);
+            });
+            $scope.showDetail=true;
+            $scope.showDoctors=false;
         }
 
         //搜索

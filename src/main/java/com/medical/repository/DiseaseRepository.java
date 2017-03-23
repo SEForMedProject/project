@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by ewrfcas on 2017/3/14.
  */
-public interface DiseaseRepository extends JpaRepository<JPADisease,String> {
+public interface DiseaseRepository extends JpaRepository<JPADisease,Integer> {
     List<JPADisease> findByNameContaining(String name);
     List<JPADisease> findBySymptomContaining(String name);
 }
