@@ -133,7 +133,7 @@
 										<button type="submit" class="button-search btn btn-primary" name="submit_search" ng-click="Search"><i class="fa fa-search"></i></button>
 									</span>
                             </div>
-                            <div class="list-group" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
+                            <div class="list-group pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
                                 <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
                                     <span class="badge">{{item.tag}}</span>
                                 </a>
