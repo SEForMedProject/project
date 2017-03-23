@@ -45,12 +45,11 @@
     <link id="color_scheme" href="../moban/css/theme.css" rel="stylesheet">
     <link href="../moban/css/responsive.css" rel="stylesheet">
 </head>
-<body ng-app="medicalApp" ng-controller="diseaseCtrl"  ng-cloak  ng-init="init()" class="common-home res layout-home1">
+<body ng-app="medicalApp" ng-controller="diseaseCtrl"  ng-cloak  ng-init="init()" class="common-home res layout-home1" style="overflow-y: scroll">
     <div id="wrapper" class="wrapper-full banners-effect-7">
-    <!-- Header Container  -->
-    <header id="header" class=" variantleft type_1">
-        <!-- Header Top -->
-        <div class="header-top compact-hidden">
+        <!-- Header Container  -->
+        <header id="header" class=" variantleft type_1">
+            <div class="header-top compact-hidden">
             <div class="container">
                 <div class="row">
                     <div class="header-top-left form-inline col-sm-6 col-xs-12 compact-hidden">
@@ -101,10 +100,7 @@
                 </div>
             </div>
         </div>
-        <!-- //Header Top -->
-
-        <!-- Header center -->
-        <div class="header-center left">
+            <div class="header-center left">
             <div class="container">
                 <div class="row">
                     <!-- Logo -->
@@ -230,834 +226,143 @@
             </div>
         </div>
         </header>
-    <!-- //Header Container  -->
-        <!-- Header Bottom -->
-        <div class="header-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="sidebar-menu col-md-3 col-sm-6 col-xs-12 ">
-                        <div class="responsive so-megamenu ">
-                            <div class="so-vertical-menu no-gutter compact-hidden">
-                                <nav class="navbar-default">
-                                    <div class="container-megamenu vertical open">
-                                        <div id="menuHeading">
-                                            <div class="megamenuToogle-wrapper">
-                                                <div class="megamenuToogle-pattern">
-                                                    <div class="container">
-                                                        <div>
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                        </div>
-                                                        All Categories
-                                                        <i class="fa pull-right arrow-circle fa-chevron-circle-up"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="navbar-header">
-                                            <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle fa fa-list-alt">
-                                            </button>
-                                            All Categories
-                                        </div>
-                                        <div class="vertical-wrapper" >
-                                            <span id="remove-verticalmenu" class="fa fa-times"></span>
-                                            <div class="megamenu-pattern">
-                                                <div class="container">
-                                                    <ul class="megamenu">
-                                                        <li class="item-vertical style1 with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/9.png" alt="icon">
-                                                                <span>Automotive &amp; Motocrycle</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Apparel</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Accessories for Tablet PC</a></li>
-                                                                                                    <li><a href="#" >Accessories for i Pad</a></li>
-                                                                                                    <li><a  href="#" >Accessories for iPhone</a></li>
-                                                                                                    <li><a href="#" >Bags, Holiday Supplies</a></li>
-                                                                                                    <li><a href="#" >Car Alarms and Security</a></li>
-                                                                                                    <li><a href="#" >Car Audio &amp; Speakers</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Cables &amp; Connectors</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Cameras &amp; Photo</a></li>
-                                                                                                    <li><a href="#" >Electronics</a></li>
-                                                                                                    <li><a href="#" >Outdoor &amp; Traveling</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Camping &amp; Hiking</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Earings</a></li>
-                                                                                                    <li><a href="#" >Shaving &amp; Hair Removal</a></li>
-                                                                                                    <li><a href="#" >Salon &amp; Spa Equipment</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Smartphone &amp; Tablets</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Sports &amp; Outdoors</a></li>
-                                                                                                    <li><a href="#" >Bath &amp; Body</a></li>
-                                                                                                    <li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Bags, Holiday Supplies</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '18_46';">Battereries &amp; Chargers</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '18_45';">Headphones, Headsets</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '18_30';">Home Audio</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/10.png" alt="icon">
-                                                                <span>Electronic</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <span class="label"></span>
-                                                                <img src="../moban/image/theme/icons/3.png" alt="icon">
-                                                                <span>Sports &amp; Outdoors</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="60" >
-                                                                <div class="content">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '81';" class="main-menu">Mobile Accessories</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '33_63';">Gadgets &amp; Auto Parts</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">Bags, Holiday Supplies</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '18_46';" class="main-menu">Battereries &amp; Chargers</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '25_28';">Outdoor &amp; Traveling</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '80';">Flashlights &amp; Lamps</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_66';">Fragrances</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '25_31';" class="main-menu">Fishing</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '57_73';">FPV System &amp; Parts</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '18';">Electronics</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '20_76';">Earings</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '33_60';">More Car Accessories</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="row banner">
-                                                                                <a href="#">
-                                                                                    <img src="../moban/image/demo/cms/menu_bg2.jpg" alt="banner1">
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/2.png" alt="icon">
-                                                                <span>Health &amp; Beauty</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Car Alarms and Security</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Car Audio &amp; Speakers</a></li>
-                                                                                                    <li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-                                                                                                    <li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-                                                                                                    <li><a href="#" >Headphones, Headsets</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="" onclick="window.location = '24';" class="main-menu">Health &amp; Beauty</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Home Audio</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Helicopters &amp; Parts</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Outdoor &amp; Traveling</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Toys &amp; Hobbies</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Electronics</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Earings</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Salon &amp; Spa Equipment</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Shaving &amp; Hair Removal</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Smartphone &amp; Tablets</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Sports &amp; Outdoors</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Flashlights &amp; Lamps</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Fragrances</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Fishing</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >FPV System &amp; Parts</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">More Car Accessories</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Lighter &amp; Cigar Supplies</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Mp3 Players &amp; Accessories</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Men Watches</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Mobile Accessories</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Gadgets &amp; Auto Parts</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Gift &amp; Lifestyle Gadgets</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Gift for Man</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Gift for Woman</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Gift for Woman</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical css-menu with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/2.png" alt="icon">
-                                                                <span>Smartphone &amp; Tablets</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="30" style="width: 270px; display: none; right: 0px;">
-                                                                <div class="content" style="display: none;">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12 hover-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Headphones, Headsets</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Home Audio</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Health &amp; Beauty</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Helicopters &amp; Parts</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Helicopters &amp; Parts</a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/11.png" alt="icon">
-                                                                <span>Flashlights &amp; Lamps</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/4.png" alt="icon">
-                                                                <span>Camera &amp; Photo</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/5.png" alt="icon">
-                                                                <span>Smartphone &amp; Tablets</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" >
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/7.png" alt="icon">
-                                                                <span>Outdoor &amp; Traveling Supplies</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" style="display: none;">
-                                                            <p class="close-menu"></p>
-
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/6.png" alt="icon">
-                                                                <span>Health &amp; Beauty</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" >
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/8.png" alt="icon">
-                                                                <span>Toys &amp; Hobbies </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" >
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/12.png" alt="icon">
-                                                                <span>Jewelry &amp; Watches</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" >
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/13.png" alt="icon">
-                                                                <span>Bags, Holiday Supplies</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item-vertical" >
-                                                            <p class="close-menu"></p>
-
-                                                            <a href="#" class="clearfix">
-                                                                <img src="../moban/image/theme/icons/13.png" alt="icon">
-                                                                <span>More Car Accessories</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="loadmore">
-                                                            <i class="fa fa-plus-square-o"></i>
-                                                            <span class="more-view">More Categories</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
+        <!-- //Header Container  -->
+        <!--导航栏-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">toggle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+                        <a href="##" class="navbar-brand">导航</a>
                     </div>
-
-                    <!-- Main menu -->
-                    <div class="megamenu-hori header-bottom-right  col-md-9 col-sm-6 col-xs-12 ">
-                        <div class="responsive so-megamenu ">
-                            <nav class="navbar-default">
-                                <div class=" container-megamenu  horizontal">
-                                    <div class="navbar-header">
-                                        <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        Navigation
-                                    </div>
-                                    <div class="megamenu-wrapper">
-                                        <span id="remove-megamenu" class="fa fa-times"></span>
-                                        <div class="megamenu-pattern">
-                                            <div class="container">
-                                                <ul class="megamenu " data-transition="slide" data-animationtime="250">
-                                                    <li class="home hover">
-                                                        <a href="index.html">Home <b class="caret"></b></a>
-                                                        <div class="sub-menu" style="width:100%;" >
-                                                            <div class="content" >
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                        <a href="index.html" class="image-link">
-																				<span class="thumbnail">
-																					<img class="img-responsive img-border" src="../moban/image/demo/feature/home-1.jpg" alt="">
-																					<span class="btn btn-default">Read More</span>
-																				</span>
-                                                                            <h3 class="figcaption">Home page - (Default)</h3>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="image-link">
-																				<span class="thumbnail">
-																					<img class="img-responsive img-border" src="../moban/image/demo/feature/home-2.jpg" alt="">
-																					<span class="btn btn-default">Read More</span>
-																				</span>
-                                                                            <h3 class="figcaption">Home page - Layout 2</h3>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="image-link">
-																				<span class="thumbnail">
-																					<img class="img-responsive img-border" src="../moban/image/demo/feature/home-3.jpg" alt="">
-																					<span class="btn btn-default">Read More</span>
-																				</span>
-                                                                            <h3 class="figcaption">Home page - Layout 3</h3>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="image-link">
-																				<span class="thumbnail">
-																					<img class="img-responsive img-border" src="../moban/image/demo/feature/home-4.jpg" alt="">
-																					<span class="btn btn-default">Read More</span>
-																				</span>
-                                                                            <h3 class="figcaption">Home page - Layout 4</h3>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="with-sub-menu hover">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Features</strong>
-                                                            <span class="label"> Hot</span>
-                                                            <b class="caret"></b>
-                                                        </a>
-                                                        <div class="sub-menu" style="width: 100%; right: auto;">
-                                                            <div class="content" >
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                        <div class="column">
-                                                                            <a href="#" class="title-submenu">Listing pages</a>
-                                                                            <div>
-                                                                                <ul class="row-list">
-                                                                                    <li><a href="category.html">Category Page 1 </a></li>
-                                                                                    <li><a href="#">Category Page 2</a></li>
-                                                                                    <li><a href="#">Category Page 3</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="column">
-                                                                            <a href="#" class="title-submenu">Product pages</a>
-                                                                            <div>
-                                                                                <ul class="row-list">
-                                                                                    <li><a href="product.html">Image size - big</a></li>
-                                                                                    <li><a href="#">Image size - medium</a></li>
-                                                                                    <li><a href="#">Image size - small</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="column">
-                                                                            <a href="#" class="title-submenu">Shopping pages</a>
-                                                                            <div>
-                                                                                <ul class="row-list">
-                                                                                    <li><a href="#">Shopping Cart Page</a></li>
-                                                                                    <li><a href="#">Checkout Page</a></li>
-                                                                                    <li><a href="#">Compare Page</a></li>
-                                                                                    <li><a href="#">Wishlist Page</a></li>
-
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="column">
-                                                                            <a href="#" class="title-submenu">My Account pages</a>
-                                                                            <div>
-                                                                                <ul class="row-list">
-                                                                                    <li><a href="login.html">Login Page</a></li>
-                                                                                    <li><a href="register.html">Register Page</a></li>
-                                                                                    <li><a href="#">My Account</a></li>
-                                                                                    <li><a href="#">Order History</a></li>
-                                                                                    <li><a href="#">Order Information</a></li>
-                                                                                    <li><a href="#">Product Returns</a></li>
-                                                                                    <li><a href="#">Gift Voucher</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="with-sub-menu hover">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Pages</strong>
-                                                            <span class="label"> Hot</span>
-                                                            <b class="caret"></b>
-                                                        </a>
-                                                        <div class="sub-menu" style="width: 40%; ">
-                                                            <div class="content" >
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <ul class="row-list">
-                                                                            <li><a class="subcategory_item" href="#">FAQ</a></li>
-                                                                            <li><a class="subcategory_item" href="#">Typography</a></li>
-                                                                            <li><a class="subcategory_item" href="#">Site Map</a></li>
-                                                                            <li><a class="subcategory_item" href="#">Contact us</a></li>
-                                                                            <li><a class="subcategory_item" href="#">Banner Effect</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <ul class="row-list">
-                                                                            <li><a class="subcategory_item" href="#">About Us 1</a></li>
-                                                                            <li><a class="subcategory_item" href="#">About Us 2</a></li>
-                                                                            <li><a class="subcategory_item" href="#">About Us 3</a></li>
-                                                                            <li><a class="subcategory_item" href="#">About Us 4</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="with-sub-menu hover">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Categories</strong>
-                                                            <span class="label"></span>
-                                                            <b class="caret"></b>
-                                                        </a>
-                                                        <div class="sub-menu" style="width: 100%; display: none;">
-                                                            <div class="content">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-3 img img1">
-                                                                                <a href="#"><img src="../moban/image/demo/cms/img1.jpg" alt="banner1"></a>
-                                                                            </div>
-                                                                            <div class="col-md-3 img img2">
-                                                                                <a href="#"><img src="../moban/image/demo/cms/img2.jpg" alt="banner2"></a>
-                                                                            </div>
-                                                                            <div class="col-md-3 img img3">
-                                                                                <a href="#"><img src="../moban/image/demo/cms/img3.jpg" alt="banner3"></a>
-                                                                            </div>
-                                                                            <div class="col-md-3 img img4">
-                                                                                <a href="#"><img src="../moban/image/demo/cms/img4.jpg" alt="banner4"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="title-submenu">Automotive</a>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 hover-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li><a href="#"  class="main-menu">Car Alarms and Security</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Car Audio &amp; Speakers</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Gadgets &amp; Auto Parts</a></li>
-                                                                                        <li><a href="#"  class="main-menu">More Car Accessories</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="title-submenu">Electronics</a>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 hover-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li><a href="#"  class="main-menu">Battereries &amp; Chargers</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Headphones, Headsets</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Home Audio</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Mp3 Players &amp; Accessories</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="title-submenu">Jewelry &amp; Watches</a>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 hover-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li><a href="#"  class="main-menu">Earings</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Wedding Rings</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Men Watches</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <a href="#" class="title-submenu">Bags, Holiday Supplies</a>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 hover-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li><a href="#"  class="main-menu">Gift &amp; Lifestyle Gadgets</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Gift for Man</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Gift for Woman</a></li>
-                                                                                        <li><a href="#"  class="main-menu">Lighter &amp; Cigar Supplies</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="with-sub-menu hover">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Accessories</strong>
-                                                            <b class="caret"></b>
-                                                        </a>
-                                                        <div class="sub-menu" style="width: 100%; display: none;">
-                                                            <div class="content" style="display: none;">
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6 static-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            <a href="#"  class="main-menu">Automotive</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#">Car Alarms and Security</a></li>
-                                                                                                <li><a href="#" >Car Audio &amp; Speakers</a></li>
-                                                                                                <li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <a href="#"  class="main-menu">Smartphone &amp; Tablets</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#" >Accessories for i Pad</a></li>
-                                                                                                <li><a href="#" >Apparel</a></li>
-                                                                                                <li><a href="#" >Accessories for iPhone</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 static-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            <a href="#" class="main-menu">Sports &amp; Outdoors</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#" >Camping &amp; Hiking</a></li>
-                                                                                                <li><a href="#" >Cameras &amp; Photo</a></li>
-                                                                                                <li><a href="#" >Cables &amp; Connectors</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <a href="#"  class="main-menu">Electronics</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#" >Battereries &amp; Chargers</a></li>
-                                                                                                <li><a href="#" >Bath &amp; Body</a></li>
-                                                                                                <li><a href="#" >Outdoor &amp; Traveling</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <span class="title-submenu">Bestseller</span>
-                                                                        <div class="col-sm-12 list-product">
-                                                                            <div class="product-thumb">
-                                                                                <div class="image pull-left">
-                                                                                    <a href="#"><img src="../moban/image/demo/shop/product/35.jpg" width="80" alt="Filet Mign" title="Filet Mign" class="img-responsive"></a>
-                                                                                </div>
-                                                                                <div class="caption">
-                                                                                    <h4><a href="#">Filet Mign</a></h4>
-                                                                                    <div class="rating-box">
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                    </div>
-                                                                                    <p class="price">$1,202.00</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-12 list-product">
-                                                                            <div class="product-thumb">
-                                                                                <div class="image pull-left">
-                                                                                    <a href="#"><img src="../moban/image/demo/shop/product/W1.jpg" width="80" alt="Dail Lulpa" title="Dail Lulpa" class="img-responsive"></a>
-                                                                                </div>
-                                                                                <div class="caption">
-                                                                                    <h4><a href="#">Dail Lulpa</a></h4>
-                                                                                    <div class="rating-box">
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                    </div>
-                                                                                    <p class="price">$78.00</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-12 list-product">
-                                                                            <div class="product-thumb">
-                                                                                <div class="image pull-left">
-                                                                                    <a href="#"><img src="../moban/image/demo/shop/product/141.jpg" width="80" alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"></a>
-                                                                                </div>
-                                                                                <div class="caption">
-                                                                                    <h4><a href="#">Canon EOS 5D</a></h4>
-                                                                                    <div class="rating-box">
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                                    </div>
-                                                                                    <p class="price">
-                                                                                        <span class="price-new">$60.00</span>
-                                                                                        <span class="price-old">$145.00</span>
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Blog</strong>
-                                                            <span class="label"></span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="hidden-md">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Buy Theme!</strong>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
+                    <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <ul class="nav navbar-nav">
+                            <li ng-class="{true: 'active', false: 'inactive'}[showDetail]"><a ng-click="showDetail=true;showDoctors=false">疾病简介</a></li>
+                            <li ng-class="{true: 'active', false: 'inactive'}[showDoctors]"><a ng-click="showDetail=false;showDoctors=true">医生推荐</a></li>
+                        </ul>
                     </div>
-                    <!-- //end Main menu -->
-
                 </div>
             </div>
         </div>
-        <!-- //Header Bottom -->
+        <!--疾病介绍-->
+        <div class="row" ng-show="showDetail==true">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h3>疾病名称</h3>
+                <p>{{diseaseDetail.name}}</p>
+                <hr>
+                <h3>别名</h3>
+                <p>{{diseaseDetail.alias}}</p>
+                <hr>
+                <h3>症状</h3>
+                <p>{{diseaseDetail.symptom}}</p>
+                <hr>
+                <h3>发病部位</h3>
+                <p>{{diseaseDetail.body_part}}</p>
+                <hr>
+                <h3>易感人群</h3>
+                <p>{{diseaseDetail.prone_group}}</p>
+                <hr>
+                <h3>病因</h3>
+                <p>{{diseaseDetail.etiology}}</p>
+            </div>
+        </div>
+        <!--医生推荐-->
+        <div class="row" ng-show="showDoctors==true">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <p>医生？不存在的</p>
+            </div>
+        </div>
+        <footer class="footer-container">
+            <!-- Footer Top Container -->
+            <section class="footer-top">
+                <div class="container content">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 box-information">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Information</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Order history</a></li>
+                                        <li><a href="#">Order information</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-service">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Customer Service</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Returns</a></li>
+                                        <li><a href="#">Site Map</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-account">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">My Account</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Brands</a></li>
+                                        <li><a href="#">Gift Vouchers</a></li>
+                                        <li><a href="#">Affiliates</a></li>
+                                        <li><a href="#">Specials</a></li>
+                                        <li><a href="#" target="_blank">Our Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 collapsed-block ">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Contact Us	</h3>
+                                <div class="modcontent">
+                                    <ul class="contact-address">
+                                        <li><span class="fa fa-map-marker"></span> My Company, 42 avenue des Champs Elysées 75000 Paris France</li>
+                                        <li><span class="fa fa-envelope-o"></span> Email: <a href="#"> sales@yourcompany.com</a></li>
+                                        <li><span class="fa fa-phone">&nbsp;</span> Phone 1: 0123456789 <br>Phone 2: (123) 4567890</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Footer Top Container -->
+
+            <!-- Footer Bottom Container -->
+            <div class="footer-bottom-block ">
+                <div class=" container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                        <div class="col-sm-7">
+                            <div class="block-payment text-right"><img src="../moban/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+                        </div>
+                        <!--Back To Top-->
+                        <div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Footer Bottom Container -->
+        </footer>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="../moban/js/jquery.min.js"></script>

@@ -68,4 +68,25 @@ public class DiseaseServiceImpl implements DiseaseService{
             return response;
         }
     }
+
+    @Override
+    public Response<JPADisease> getDiseaseDetailById(int diseaseId){
+        Response<JPADisease> response=new Response<>();
+        try{
+            JPADisease jpaDisease=diseaseRepository.findOne(diseaseId);
+            if(jpaDisease==null){
+                response.setStatus(ResponseStatus.FAIL);
+                response.setMessage("未找到该疾病");
+                return response;
+            }
+            response.setData(jpaDisease);
+            response.setStatus(ResponseStatus.SUCCESS);
+            response.setMessage("疾病数据获取成功");
+            return response;
+        }catch (Exception e){
+            response.setStatus(ResponseStatus.ERROR);
+            response.setMessage(e.toString());
+            return response;
+        }
+    }
 }
