@@ -21,7 +21,7 @@ public class JPADisease {
     private String symptom;
     private String body_part;
     private String prone_group;
-    private String related_ill_id;
+    private String related_ill;
     private String definition;
     private String etiology;
     private String clinical_feature;

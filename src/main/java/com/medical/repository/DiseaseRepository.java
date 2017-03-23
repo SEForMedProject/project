@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface DiseaseRepository extends JpaRepository<JPADisease,String> {
     List<JPADisease> findByNameContaining(String name);
+    List<JPADisease> findBySymptomContaining(String name);
 }

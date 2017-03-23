@@ -1,6 +1,6 @@
 package com.medical.controller.restcontroller;
 
-import com.medical.model.Disease;
+import com.medical.model.DiseaseForSearch;
 import com.medical.service.DiseaseService;
 import com.medical.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class DiseaseController {
     private transient DiseaseService diseaseService;
 
     @RequestMapping(value="/search/getDiseaseByName" ,method = RequestMethod.GET)
-    public Response<List<Disease>> getDiseaseByName(String diseaseName) {
+    public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName) {
         return diseaseService.getDiseaseByName(diseaseName);
     }
 }
