@@ -7,7 +7,7 @@ app.config(['$locationProvider', function ($locationProvider) {
         enabled: true,
         requireBase: false
     });
-}])
+}]);
 app.factory("diseaseService",["$resource",
     function($resource){
         return $resource({},{},
@@ -55,7 +55,24 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
             });
             $scope.showDetail=true;
             $scope.showDoctors=false;
-        }
+
+            //造假数据
+            var datatest={
+                doctorName:"王大头",
+                introduce:"阿奇委屈委屈啊苏打撒旦撒打算当前我区恶趣味无穷"
+            };
+            $scope.datacars=[];
+            for(i=0;i<23;i++){
+                var obj=new Object();
+                obj.doctorName=datatest.doctorName+i;
+                obj.introduce=datatest.introduce+i;
+                $scope.datacars.push(obj);
+            }
+            $scope.currentPage=1;
+            $scope.itemsPerPage=5;
+            if($scope.datacars==null)$scope.totalItems=0;
+            else $scope.totalItems=$scope.datacars.length;
+        };
 
         //搜索
         $scope.search = function(){
@@ -67,10 +84,17 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
             },function(error){
                 console.log(error.message);
             });
-        }
+        };
 
         //跳转到疾病页面
         $scope.toDisease=function(index){
             window.location=("../disease?diseaseId="+$scope.diseaseList[index].diseaseId);
-        }
+        };
+
+        $scope.$watch('currentPage', function() {
+            var startOne=($scope.currentPage-1)*$scope.itemsPerPage;
+            var endOne=$scope.currentPage*$scope.itemsPerPage;
+            if(endOne>$scope.totalItems)endOne=$scope.totalItems;
+            $scope.showList=$scope.datacars.slice(startOne,endOne);
+        })
     }]);

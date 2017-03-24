@@ -279,7 +279,28 @@
         <div class="row" ng-show="showDoctors==true">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <p>医生？不存在的</p>
+                <div class="thumbnail" style="margin: 20px 0px;padding: 10px" ng-repeat="item in showList">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="../moban/doctor/默认.jpg" alt="...">
+                        </div>
+                        <div class="col-md-10">
+                            <h4>{{item.doctorName}}</h4>
+                            <hr>
+                            <p>{{item.introduce}}</p>
+                        </div>
+                    </div>
+                </div>
+                <uib-pagination
+                        ng-model="currentPage"
+                        items-per-page="itemsPerPage"
+                        total-items="totalItems"
+                        max-size="7"
+                        boundary-links="true"
+                        class="pagination-sm pagination-reset" rotate="false"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="第一页" last-text="最后一页">
+                </uib-pagination>
             </div>
         </div>
         <footer class="footer-container">
@@ -335,9 +356,9 @@
                                 <h3 class="modtitle">Contact Us	</h3>
                                 <div class="modcontent">
                                     <ul class="contact-address">
-                                        <li><span class="fa fa-map-marker"></span> My Company, 42 avenue des Champs Elysées 75000 Paris France</li>
-                                        <li><span class="fa fa-envelope-o"></span> Email: <a href="#"> sales@yourcompany.com</a></li>
-                                        <li><span class="fa fa-phone">&nbsp;</span> Phone 1: 0123456789 <br>Phone 2: (123) 4567890</li>
+                                        <li><span class="fa fa-map-marker"></span> My Company, 2-305</li>
+                                        <li><span class="fa fa-envelope-o"></span> Email: <a href="#"> ccjdurandal422@163.com</a></li>
+                                        <li><span class="fa fa-phone">&nbsp;</span> Phone: 13918377193</li>
                                     </ul>
                                 </div>
                             </div>
@@ -351,7 +372,7 @@
             <div class="footer-bottom-block ">
                 <div class=" container">
                     <div class="row">
-                        <div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                        <div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.</div>
                         <div class="col-sm-7">
                             <div class="block-payment text-right"><img src="../moban/image/demo/content/payment.png" alt="payment" title="payment" ></div>
                         </div>
