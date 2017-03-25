@@ -33,6 +33,12 @@
 	<link href="../moban/js/owl-carousel/owl.carousel.css" rel="stylesheet">
 	<link href="../moban/css/themecss/lib.css" rel="stylesheet">
 	<link href="../moban/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+	<!--导入angularjs-->
+	<script src="../lib/angular-1.5.5/angular.min.js"></script>
+	<script src="../lib/angular-1.5.5/angular-animate.min.js"></script>
+	<script src="../lib/angular-1.5.5/angular-resource.min.js"></script>
+	<script src="../lib/ui-bootstrap-tpls-1.3.2/ui-bootstrap-tpls-1.3.2.min.js"></script>
+	<script src="../indexJs.js"></script>
 
 	<!-- Theme CSS
 	============================================ -->
@@ -41,9 +47,44 @@
 	<link href="../moban/css/themecss/so-listing-tabs.css" rel="stylesheet">
 	<link id="color_scheme" href="../moban/css/theme.css" rel="stylesheet">
 	<link href="../moban/css/responsive.css" rel="stylesheet">
+	<link href="../lib/myfocus/mf-pattern/mF_expo2010.css/" rel="stylesheet">
+	<!-- Include Libs & Plugins
+	============================================ -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="../moban/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../moban/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../moban/js/owl-carousel/owl.carousel.js"></script>
+	<script type="text/javascript" src="../moban/js/themejs/libs.js"></script>
+	<script type="text/javascript" src="../moban/js/unveil/jquery.unveil.js"></script>
+	<script type="text/javascript" src="../moban/js/countdown/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="../moban/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+	<script type="text/javascript" src="../moban/js/datetimepicker/moment.js"></script>
+	<script type="text/javascript" src="../moban/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../moban/js/jquery-ui/jquery-ui.min.js"></script>
+
+	<!-- Theme files
+	============================================ -->
+	<script type="text/javascript" src="../moban/js/themejs/application.js"></script>
+	<script type="text/javascript" src="../moban/js/themejs/toppanel.js"></script>
+	<script type="text/javascript" src="../moban/js/themejs/so_megamenu.js"></script>
+	<script type="text/javascript" src="../moban/js/themejs/addtocart.js"></script>
+	<script type="text/javascript" src="../moban/js/themejs/cpanel.js"></script>
+	<script type="text/javascript" src="../lib/myfocus/myfocus-2.0.1.min.js"></script>
+	<script type="text/javascript" src="../lib/myfocus/mf-pattern/mF_expo2010.js"></script>
+	<script type="text/javascript">
+        myFocus.set({
+            id:'boxID',//焦点图盒子ID
+            pattern:'mF_expo2010',//风格应用的名称
+            time:2,//切换时间间隔(秒)
+            trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+            width:600,//设置图片区域宽度(像素)
+            height:422,//设置图片区域高度(像素)
+            txtHeight:'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+        });
+	</script>
 </head>
 
-<body class="common-home res layout-home1">
+<body ng-app="medicalApp" ng-controller="indexCtrl"  ng-cloak  ng-init="init()" class="common-home res layout-home1">
 	<div id="wrapper" class="wrapper-full banners-effect-7">
 		<!-- Header Container  -->
 		<header id="header" class=" variantleft type_1">
@@ -65,7 +106,6 @@
 									</ul>
 								</form>
 							</div>
-
 							<div class="form-group currencies-block">
 								<form action="index.html" method="post" enctype="multipart/form-data" id="currency">
 									<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -107,17 +147,16 @@
 					<div class="row">
 						<!-- Logo -->
 						<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-							<a href="index.html"><img src="../moban/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+							<a href="#"><img src="../moban/indexForShow/logo.png" title="Your hospital" alt="Your hospital" /></a>
 						</div>
 						<!-- //end Logo -->
-
 						<!-- Search -->
 						<div id="sosearchpro" class="col-sm-7 search-pro">
 							<form method="GET" action="index.html">
 								<div id="search0" class="search input-group">
 									<div class="select_category filter_type icon-select">
 										<select class="no-border" name="category_id">
-											<option value="0">All Categories</option>
+											<option value="0">综合</option>
 											<option value="78">Apparel</option>
 											<option value="77">Cables &amp; Connectors</option>
 											<option value="82">Cameras &amp; Photo</option>
@@ -130,12 +169,17 @@
 											<option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
 										</select>
 									</div>
-									<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search" name="search">
+									<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search" name="search" ng-change="search()" ng-model="diseaseName">
 									<span class="input-group-btn">
-									<button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+										<button type="submit" class="button-search btn btn-primary" name="submit_search" ng-click="Search"><i class="fa fa-search"></i></button>
 									</span>
 								</div>
-								<input type="hidden" name="route" value="product/search" />
+								<div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
+									<a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
+										<span class="badge">{{item.tag}}</span>
+									</a>
+								</div>
+								<input type="hidden" name="route" value="product/search"/>
 							</form>
 						</div>
 						<!-- //end Search -->
@@ -1056,39 +1100,22 @@
 		<!-- //end Navbar switcher -->
 		</header>
 		<!-- //Header Container  -->
-
 		<!-- Block Spotlight1  -->
 		<section class="so-spotlight1 ">
 			<div class="container">
 				<div class="row">
 					<div id="yt_header_right" class="col-lg-offset-3 col-lg-9 col-md-12">
 						<div class="slider-container ">
-							<div class="module first-block">
-								<div class="modcontent clearfix">
-									<div id="custom_popular_search" class="clearfix">
-										<h5 class="so-searchbox-popular-title pull-left">Top Search:</h5>
-										<div class="so-searchbox-keyword">
-											<ul class="list-inline"><li>&nbsp;<a href="#">Acer,</a></li><li><a href="#">APPLE,</a></li><li><a href="#">Black,</a></li><li><a href="#">Canon,</a></li><li><a href="#">Cogs,</a></li><li><a href="#">Confi,</a></li><li><a href="#">Kate,</a></li><li><a href="#">Lor,</a></li><li><a href="#">Product,</a></li><li><a href="#">Zolof The Rock And Roll Destroyer</a></li></ul>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div id="so-slideshow" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 two-block">
-								<div class="module slideshow no-margin">
-									<div class="item">
-										<a href="#"><img src="../moban/image/demo/slider/slider-1.png" alt="slider1" class="img-responsive"></a>
-									</div>
-									<div class="item">
-										<a href="#"><img src="../moban/image/demo/slider/slider-2.png" alt="slider2" class="img-responsive"></a>
-									</div>
-									<div class="item">
-										<a href="#"><img src="../moban/image/demo/slider/slider-3.png" alt="slider3" class="img-responsive"></a>
-									</div>
+								<div id="boxID" style="visibility:hidden"><!--焦点图盒子-->
+									<div class="loading"><span>请稍候...</span></div><!--载入画面(可删除)-->
+									<ul class="pic"><!--内容列表-->
+										<li><a href="#"><img src="../moban/indexForShow/s1.jpg" thumb="" alt="智能导医" /></a></li>
+										<li><a href="#"><img src="../moban/indexForShow/s2.jpg" thumb="" alt="智能导医" /></a></li>
+										<li><a href="#"><img src="../moban/indexForShow/s3.jpg" thumb="" alt="智能导医" /></a></li>
+									</ul>
 								</div>
-								<div class="loadeding"></div>
 							</div>
-
-
 							<div class="module col-md-4  hidden-sm hidden-xs three-block ">
 								<div class="modcontent clearfix">
 									<div class="htmlcontent-block">
@@ -1096,21 +1123,21 @@
 											<li>
 												<div class="banners">
 													<div>
-														<a href="#"><img src="../moban/image/demo/cms/banner1.jpg" alt="banner1"></a>
+														<a href="#"><img src="../moban/indexForShow/bar1.jpg" alt="banner1"></a>
 													</div>
 												</div>
 											</li>
 											<li>
 												<div class="banners">
 													<div>
-														<a href="#"><img src="../moban/image/demo/cms/banner2.jpg" alt="banner1"></a>
+														<a href="#"><img src="../moban/indexForShow/bar2.jpg" alt="banner1"></a>
 													</div>
 												</div>
 											</li>
 											<li>
 												<div class="banners">
 													<div>
-														<a href="#"><img src="../moban/image/demo/cms/banner3.jpg" alt="banner1"></a>
+														<a href="#"><img src="../moban/indexForShow/bar3.jpg" alt="banner1"></a>
 													</div>
 												</div>
 											</li>
@@ -1791,9 +1818,9 @@
 								<h3 class="modtitle">Contact Us	</h3>
 								<div class="modcontent">
 									<ul class="contact-address">
-										<li><span class="fa fa-map-marker"></span> My Company, 42 avenue des Champs Elysées 75000 Paris France</li>
-										<li><span class="fa fa-envelope-o"></span> Email: <a href="#"> sales@yourcompany.com</a></li>
-										<li><span class="fa fa-phone">&nbsp;</span> Phone 1: 0123456789 <br>Phone 2: (123) 4567890</li>
+										<li><span class="fa fa-map-marker"></span> My Company, 2-305</li>
+										<li><span class="fa fa-envelope-o"></span> Email: <a href="#"> ccjdurandal422@163.com</a></li>
+										<li><span class="fa fa-phone">&nbsp;</span> Phone: 13918377193</li>
 									</ul>
 								</div>
 							</div>
@@ -1807,7 +1834,7 @@
 			<div class="footer-bottom-block ">
 				<div class=" container">
 					<div class="row">
-						<div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+						<div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.</div>
 						<div class="col-sm-7">
 							<div class="block-payment text-right"><img src="../moban/image/demo/content/payment.png" alt="payment" title="payment" ></div>
 						</div>
@@ -1832,29 +1859,6 @@
 		<div class="loader-section section-right"></div>
 	</div>
 	<!-- End Preloading Screen -->
-
-	<!-- Include Libs & Plugins
-	============================================ -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" src="../moban/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../moban/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../moban/js/owl-carousel/owl.carousel.js"></script>
-	<script type="text/javascript" src="../moban/js/themejs/libs.js"></script>
-	<script type="text/javascript" src="../moban/js/unveil/jquery.unveil.js"></script>
-	<script type="text/javascript" src="../moban/js/countdown/jquery.countdown.min.js"></script>
-	<script type="text/javascript" src="../moban/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-	<script type="text/javascript" src="../moban/js/datetimepicker/moment.js"></script>
-	<script type="text/javascript" src="../moban/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="../moban/js/jquery-ui/jquery-ui.min.js"></script>
-
-
-	<!-- Theme files
-	============================================ -->
-	<script type="text/javascript" src="../moban/js/themejs/application.js"></script>
-	<script type="text/javascript" src="../moban/js/themejs/toppanel.js"></script>
-	<script type="text/javascript" src="../moban/js/themejs/so_megamenu.js"></script>
-	<script type="text/javascript" src="../moban/js/themejs/addtocart.js"></script>
-	<script type="text/javascript" src="../moban/js/themejs/cpanel.js"></script>
 </body>
 </html>
 

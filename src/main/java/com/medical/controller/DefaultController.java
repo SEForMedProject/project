@@ -18,8 +18,8 @@ import java.io.Console;
 @Slf4j
 public class DefaultController {
     @RequestMapping(value = "/")
-    public String defaultPage(Model model) {
-        model.addAttribute("message","wo shi ni baBa");return "hello" ;
-    }
-
+    public String defaultPage(Model model) {return "index";}
+    @RequestMapping(value="/disease")
+    public String diseasePage(Model model) {return "disease";}
 }
+
