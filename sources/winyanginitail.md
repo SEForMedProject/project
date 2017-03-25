@@ -1,20 +1,20 @@
-##初始化帮助文档：
+#初始化帮助文档：
 
-####在项目下创建自己的分支:
+###在项目下创建自己的分支:
 
 ![how to create a branch](./creatbranch.PNG)
 
-####进入某个文件目录,clone远程代码:
+###进入某个文件目录,clone远程代码:
 >cd one_selected_path    //你想把项目放置的文件夹
 
 >git clone git@github.com:SEForMedProject/project.git
 
-####记录与远程分支联系
+###记录与远程分支联系
 >cd project         //进入项目,克隆下来的项目名叫project,醉了
 
 >git checkout --track origin/<你的分支名>
 
-####第一次推代码到分支
+###第一次推代码到分支
 >git push -u origin <你的分支名> //第一次需要设置，后面不需要，如果遇到问题(ssh key问题),那么可以修改项目根目录下 .git/config 文件 把对应位置做如下更改
 
 >git协议改为https协议:
@@ -25,7 +25,7 @@
 </code></pre>
 
 
-####以后使用
+###以后使用
 
 写好代码之后在项目根目录
 > git add -A    //信息加到索引库 
@@ -36,3 +36,12 @@
 
 > git push   //提交远程
 
+###本地分支查看
+>git branch
+
+###本地分支切换
+>git checkout <分支名称>
+
+###本地分支合并
+如果你是在A分支,想把B分支合并进来
+>git merge B   //然后人为处理一下Confilict
