@@ -21,6 +21,11 @@ app.factory("diseaseService",["$resource",
                     method:"GET",
                     url:"/disease/getDiseaseDetailById/",
                     isArray:false
+                },
+                getDoctorByDiseaseName:{
+                    method:"GET",
+                    url:"/doctor/getDoctorByDiseaseName",
+                    isArray:false
                 }
             }
         )
@@ -44,34 +49,33 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
          */
         $scope.init = function () {
             var request = GetRequest();
+            $scope.dataReady=false;
             $scope.diseaseId=request["diseaseId"];
+            //获取疾病信息
             var params={
                 diseaseId:$scope.diseaseId
             };
             diseaseService.getDiseaseDetailById(params).$promise.then(function (response) {
                 $scope.diseaseDetail=response.data;
+                //获取相关医生
+                var params={
+                    diseaseName:$scope.diseaseDetail.name
+                };
+                diseaseService.getDoctorByDiseaseName(params).$promise.then(function (response) {
+                    $scope.doctorList=response.data;
+                    $scope.showDetail=true;
+                    $scope.showDoctors=false;
+                    $scope.currentPage=1;
+                    $scope.itemsPerPage=5;
+                    if($scope.doctorList==null)$scope.totalItems=0;
+                    else $scope.totalItems=$scope.doctorList.length;
+                    $scope.dataReady=true;
+                },function(error){
+                    console.log(error.message);
+                });
             },function(error){
                 console.log(error.message);
             });
-            $scope.showDetail=true;
-            $scope.showDoctors=false;
-
-            //造假数据
-            var datatest={
-                doctorName:"王大头",
-                introduce:"阿奇委屈委屈啊苏打撒旦撒打算当前我区恶趣味无穷"
-            };
-            $scope.datacars=[];
-            for(i=0;i<23;i++){
-                var obj=new Object();
-                obj.doctorName=datatest.doctorName+i;
-                obj.introduce=datatest.introduce+i;
-                $scope.datacars.push(obj);
-            }
-            $scope.currentPage=1;
-            $scope.itemsPerPage=5;
-            if($scope.datacars==null)$scope.totalItems=0;
-            else $scope.totalItems=$scope.datacars.length;
         };
 
         //搜索
@@ -92,9 +96,11 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
         };
 
         $scope.$watch('currentPage', function() {
-            var startOne=($scope.currentPage-1)*$scope.itemsPerPage;
-            var endOne=$scope.currentPage*$scope.itemsPerPage;
-            if(endOne>$scope.totalItems)endOne=$scope.totalItems;
-            $scope.showList=$scope.datacars.slice(startOne,endOne);
+            if($scope.dataReady){
+                var startOne=($scope.currentPage-1)*$scope.itemsPerPage;
+                var endOne=$scope.currentPage*$scope.itemsPerPage;
+                if(endOne>$scope.totalItems)endOne=$scope.totalItems;
+                $scope.showList=$scope.doctorList.slice(startOne,endOne);
+            }
         })
     }]);
