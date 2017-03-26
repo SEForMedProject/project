@@ -2,6 +2,7 @@ package com.medical.model.jpa;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,12 +12,37 @@ import javax.persistence.Table;
  */
 @Entity
 @Data
-@Table(name = "doctor")
+@Table(name = "tb_doctor")
 public class JPADoctor {
     @Id
-    private int doctor_id;
+    private int id;
 
-    private String doctor_name;
+    private String name;
 
-    private int doctor_age;
+    private String password;
+
+    private String title;
+
+    private int hospital_id;
+
+    private int department_id;
+
+    @Column(name = "good_at")
+    private String goodAt;
+
+    private float rating;
+
+    private int num_treatment;
+
+    private int num_reservation;
+
+    private String introduction;
+
+    private String phone;
+
+    private String mail;
+
+    private String icon_id;
+
+    private int user_type;
 }

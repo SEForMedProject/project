@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by ewrfcas on 2017/3/2.
  */
@@ -16,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class DoctorController {
     @Autowired
     private transient DoctorService doctorService;
-    //测试接口
-    @RequestMapping(value="/doctor/getDoctorByName" ,method = RequestMethod.GET)
-    public Response<Doctor> getDoctorByName(String doctorName) {
-        return doctorService.getDoctorByName(doctorName);
+
+    @RequestMapping(value="/doctor/getDoctorByDiseaseName" ,method = RequestMethod.GET)
+    public Response<List<Doctor>> getDoctorByDiseaseName(String diseaseName) {
+        return doctorService.getDoctorByDiseaseName(diseaseName);
     }
 }
