@@ -7,7 +7,7 @@ app.config(['$locationProvider', function ($locationProvider) {
         enabled: true,
         requireBase: false
     });
-}])
+}]);
 app.factory("diseaseService",["$resource",
     function($resource){
         return $resource({},{},
@@ -15,6 +15,16 @@ app.factory("diseaseService",["$resource",
                 search:{
                     method:"GET",
                     url:"/search/getDiseaseByName/",
+                    isArray:false
+                },
+                getDiseaseDetailById:{
+                    method:"GET",
+                    url:"/disease/getDiseaseDetailById/",
+                    isArray:false
+                },
+                getDoctorByDiseaseName:{
+                    method:"GET",
+                    url:"/doctor/getDoctorByDiseaseName",
                     isArray:false
                 }
             }
@@ -39,9 +49,34 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
          */
         $scope.init = function () {
             var request = GetRequest();
+            $scope.dataReady=false;
             $scope.diseaseId=request["diseaseId"];
-            console.log($scope.diseaseId);
-        }
+            //获取疾病信息
+            var params={
+                diseaseId:$scope.diseaseId
+            };
+            diseaseService.getDiseaseDetailById(params).$promise.then(function (response) {
+                $scope.diseaseDetail=response.data;
+                //获取相关医生
+                var params={
+                    diseaseName:$scope.diseaseDetail.name
+                };
+                diseaseService.getDoctorByDiseaseName(params).$promise.then(function (response) {
+                    $scope.doctorList=response.data;
+                    $scope.showDetail=true;
+                    $scope.showDoctors=false;
+                    $scope.currentPage=1;
+                    $scope.itemsPerPage=5;
+                    if($scope.doctorList==null)$scope.totalItems=0;
+                    else $scope.totalItems=$scope.doctorList.length;
+                    $scope.dataReady=true;
+                },function(error){
+                    console.log(error.message);
+                });
+            },function(error){
+                console.log(error.message);
+            });
+        };
 
         //搜索
         $scope.search = function(){
@@ -53,10 +88,19 @@ app.controller("diseaseCtrl", ["$scope","diseaseService",
             },function(error){
                 console.log(error.message);
             });
-        }
+        };
 
         //跳转到疾病页面
         $scope.toDisease=function(index){
             window.location=("../disease?diseaseId="+$scope.diseaseList[index].diseaseId);
-        }
+        };
+
+        $scope.$watch('currentPage', function() {
+            if($scope.dataReady){
+                var startOne=($scope.currentPage-1)*$scope.itemsPerPage;
+                var endOne=$scope.currentPage*$scope.itemsPerPage;
+                if(endOne>$scope.totalItems)endOne=$scope.totalItems;
+                $scope.showList=$scope.doctorList.slice(startOne,endOne);
+            }
+        })
     }]);
