@@ -26,7 +26,8 @@ public class DiseaseServiceImpl implements DiseaseService{
     @Autowired
     private transient IndexSortForDisease indexSortForDisease;
     @Override
-    public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName){
+    public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName,int flag){
+        diseaseName=filter(diseaseName);
         Response<List<DiseaseForSearch>> response=new Response<>();
         boolean searchByBody=false;
         if(diseaseName==""||diseaseName==null){
@@ -81,6 +82,37 @@ public class DiseaseServiceImpl implements DiseaseService{
                 List<JPADisease> jpaDiseaseList1 = diseaseRepository.findByNameContaining(diseaseName);
                 List<JPADisease> jpaDiseaseList2 = diseaseRepository.findBySymptomContaining(diseaseName);
                 if(jpaDiseaseList1.size()+jpaDiseaseList2.size()==0){
+                    if(flag==2){
+                        //无论怎么样都要搜到，瞎鸡巴搞
+                        String newName="";
+                        for(int j=0;j<diseaseName.length();j++){
+                            newName+=diseaseName.substring(j,j+1);
+                            if(j==diseaseName.length()-1)break;
+                            newName+="%";
+                        }
+                        List<JPADisease> jpaDiseaseList = diseaseRepository.findAnyWay(newName);
+                        if(jpaDiseaseList==null||jpaDiseaseList.size()==0){
+                            response.setStatus(ResponseStatus.FAIL);
+                            response.setMessage("无该疾病");
+                            return response;
+                        }
+                        for (JPADisease jpaDisease:jpaDiseaseList){
+                            DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
+                            diseaseForSearch.setDiseaseId(jpaDisease.getId());
+                            diseaseForSearch.setDiseaseName(jpaDisease.getName());
+                            String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
+                            if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
+                            diseaseForSearch.setShowDetail(detail);
+                            diseaseForSearch.setTag("症状");
+                            diseaseForSearch.setIndex(jpaDisease.getSearch_index());
+                            diseaseForSearches.add(diseaseForSearch);
+                        }
+                        Collections.sort(diseaseForSearches, indexSortForDisease);
+                        response.setData(diseaseForSearches);
+                        response.setStatus(ResponseStatus.SUCCESS);
+                        response.setMessage("疾病查找成功");
+                        return response;
+                    }
                     response.setStatus(ResponseStatus.FAIL);
                     response.setMessage("无该疾病");
                     return response;
@@ -142,5 +174,9 @@ public class DiseaseServiceImpl implements DiseaseService{
             response.setMessage(e.toString());
             return response;
         }
+    }
+
+    private String filter(String name){
+       return name.replaceAll("十分|相当|非常|很|有点|有点儿|特别|剧|剧烈","");
     }
 }
