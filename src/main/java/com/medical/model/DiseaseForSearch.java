@@ -12,4 +12,5 @@ public class DiseaseForSearch {
     private String diseaseName;
     private String showDetail;//搜索框左边展示的内容，通常是diseaseName或者是症状（diseaseName）
     private String tag;//搜索框右边显示词条（疾病，症状）
+    private int index;
 }
