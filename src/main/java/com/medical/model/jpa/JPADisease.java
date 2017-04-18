@@ -16,13 +16,14 @@ public class JPADisease {
     @Id
     private int id;
     private String name;
-    private int department_id;
+    private String department;
     private String alias;
     private String symptom;
-    private String body_part;
+    private String bodypart;
     private String prone_group;
     private String related_ill;
     private String definition;
     private String etiology;
     private String clinical_feature;
+    private int search_index;
 }
