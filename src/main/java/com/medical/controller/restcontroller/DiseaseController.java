@@ -31,14 +31,14 @@ public class DiseaseController {
         Response<List<DiseaseForSearch>> response=new Response<>();
         List<DiseaseForSearch> diseaseForSearches=new ArrayList<>();
         if (diseaseName.contains("痛")||(diseaseName.contains("疼"))){
-            List<DiseaseForSearch> diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName,1).getData();
+            List<DiseaseForSearch> diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName).getData();
             if(diseaseForSearches1!=null&&diseaseForSearches1.size()!=0)diseaseForSearches.addAll(diseaseForSearches1);
             if(diseaseName.contains("痛")){
                 diseaseName=diseaseName.replaceAll("痛","疼");
             }else{
                 diseaseName=diseaseName.replaceAll("疼","痛");
             }
-            diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName,1).getData();
+            diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName).getData();
             if(diseaseForSearches1!=null&&diseaseForSearches1.size()!=0)diseaseForSearches.addAll(diseaseForSearches1);
             Collections.sort(diseaseForSearches, indexSortForDisease);
             response.setStatus(ResponseStatus.SUCCESS);
@@ -46,7 +46,7 @@ public class DiseaseController {
             response.setData(diseaseForSearches);
             return response;
         }
-        else return diseaseService.getDiseaseByName(diseaseName,2);
+        else return diseaseService.getDiseaseByName(diseaseName);
     }
 
     @RequestMapping(value = "/disease/getDiseaseDetailById", method = RequestMethod.GET)

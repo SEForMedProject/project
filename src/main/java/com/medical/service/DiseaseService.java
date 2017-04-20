@@ -11,6 +11,6 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public interface DiseaseService {
-    Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName,int flag);
+    Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName);
     Response<JPADisease> getDiseaseDetailById(int diseaseId);
 }
