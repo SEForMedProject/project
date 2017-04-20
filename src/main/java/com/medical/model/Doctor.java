@@ -11,5 +11,6 @@ public class Doctor {
     private String name;
     private String goodAt;
     private String title;
+    private String department;
     private String introduction;
 }

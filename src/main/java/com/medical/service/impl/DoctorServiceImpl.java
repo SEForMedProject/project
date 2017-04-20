@@ -37,6 +37,7 @@ public class DoctorServiceImpl implements DoctorService{
                 doctor.setName(jpaDoctor.getName());
                 doctor.setGoodAt(jpaDoctor.getGoodAt());
                 doctor.setTitle(jpaDoctor.getTitle());
+                doctor.setDepartment(jpaDoctor.getDepartment());
                 doctor.setIntroduction(jpaDoctor.getIntroduction());
                 doctors.add(doctor);
             }

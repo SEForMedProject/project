@@ -26,7 +26,7 @@ public class DiseaseServiceImpl implements DiseaseService{
     @Autowired
     private transient IndexSortForDisease indexSortForDisease;
     @Override
-    public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName,int flag){
+    public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName){
         diseaseName=filter(diseaseName);
         Response<List<DiseaseForSearch>> response=new Response<>();
         boolean searchByBody=false;
@@ -61,6 +61,8 @@ public class DiseaseServiceImpl implements DiseaseService{
                             diseaseForSearch.setDiseaseName(jpaDisease.getName());
                             diseaseForSearch.setShowDetail(jpaDisease.getName());
                             diseaseForSearch.setIndex(jpaDisease.getSearch_index());
+                            diseaseForSearch.setAlias(jpaDisease.getAlias());
+                            diseaseForSearch.setBodypart(jpaDisease.getBodypart());
                             diseaseForSearch.setTag("疾病");
                             diseaseForSearches.add(diseaseForSearch);
                         }else if(jpaDisease.getSymptom().contains(diseaseName)){
@@ -69,6 +71,8 @@ public class DiseaseServiceImpl implements DiseaseService{
                             diseaseForSearch.setDiseaseName(jpaDisease.getName());
                             String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
                             if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
+                            diseaseForSearch.setAlias(jpaDisease.getAlias());
+                            diseaseForSearch.setBodypart(jpaDisease.getBodypart());
                             diseaseForSearch.setShowDetail(detail);
                             diseaseForSearch.setIndex(jpaDisease.getSearch_index());
                             diseaseForSearch.setTag("症状");
@@ -82,39 +86,36 @@ public class DiseaseServiceImpl implements DiseaseService{
                 List<JPADisease> jpaDiseaseList1 = diseaseRepository.findByNameContaining(diseaseName);
                 List<JPADisease> jpaDiseaseList2 = diseaseRepository.findBySymptomContaining(diseaseName);
                 if(jpaDiseaseList1.size()+jpaDiseaseList2.size()==0){
-                    if(flag==2){
-                        //无论怎么样都要搜到，瞎鸡巴搞
-                        String newName="";
-                        for(int j=0;j<diseaseName.length();j++){
-                            newName+=diseaseName.substring(j,j+1);
-                            if(j==diseaseName.length()-1)break;
-                            newName+="%";
-                        }
-                        List<JPADisease> jpaDiseaseList = diseaseRepository.findAnyWay(newName);
-                        if(jpaDiseaseList==null||jpaDiseaseList.size()==0){
-                            response.setStatus(ResponseStatus.FAIL);
-                            response.setMessage("无该疾病");
-                            return response;
-                        }
-                        for (JPADisease jpaDisease:jpaDiseaseList){
-                            DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
-                            diseaseForSearch.setDiseaseId(jpaDisease.getId());
-                            diseaseForSearch.setDiseaseName(jpaDisease.getName());
-                            String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
-                            if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
-                            diseaseForSearch.setShowDetail(detail);
-                            diseaseForSearch.setTag("症状");
-                            diseaseForSearch.setIndex(jpaDisease.getSearch_index());
-                            diseaseForSearches.add(diseaseForSearch);
-                        }
-                        Collections.sort(diseaseForSearches, indexSortForDisease);
-                        response.setData(diseaseForSearches);
-                        response.setStatus(ResponseStatus.SUCCESS);
-                        response.setMessage("疾病查找成功");
+                    //无论怎么样都要搜到~
+                    String newName="";
+                    for(int j=0;j<diseaseName.length();j++){
+                        newName+=diseaseName.substring(j,j+1);
+                        if(j==diseaseName.length()-1)break;
+                        newName+="%";
+                    }
+                    List<JPADisease> jpaDiseaseList = diseaseRepository.findAnyWay(newName);
+                    if(jpaDiseaseList==null||jpaDiseaseList.size()==0){
+                        response.setStatus(ResponseStatus.FAIL);
+                        response.setMessage("无该疾病");
                         return response;
                     }
-                    response.setStatus(ResponseStatus.FAIL);
-                    response.setMessage("无该疾病");
+                    for (JPADisease jpaDisease:jpaDiseaseList){
+                        DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
+                        diseaseForSearch.setDiseaseId(jpaDisease.getId());
+                        diseaseForSearch.setDiseaseName(jpaDisease.getName());
+                        String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
+                        if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
+                        diseaseForSearch.setAlias(jpaDisease.getAlias());
+                        diseaseForSearch.setBodypart(jpaDisease.getBodypart());
+                        diseaseForSearch.setShowDetail(detail);
+                        diseaseForSearch.setTag("症状");
+                        diseaseForSearch.setIndex(jpaDisease.getSearch_index());
+                        diseaseForSearches.add(diseaseForSearch);
+                    }
+                    Collections.sort(diseaseForSearches, indexSortForDisease);
+                    response.setData(diseaseForSearches);
+                    response.setStatus(ResponseStatus.SUCCESS);
+                    response.setMessage("疾病查找成功");
                     return response;
                 }
                 HashMap<Integer,Integer> hasFlag=new HashMap<>();
@@ -123,6 +124,8 @@ public class DiseaseServiceImpl implements DiseaseService{
                     diseaseForSearch.setDiseaseId(jpaDisease.getId());
                     diseaseForSearch.setDiseaseName(jpaDisease.getName());
                     diseaseForSearch.setShowDetail(jpaDisease.getName());
+                    diseaseForSearch.setAlias(jpaDisease.getAlias());
+                    diseaseForSearch.setBodypart(jpaDisease.getBodypart());
                     diseaseForSearch.setTag("疾病");
                     diseaseForSearch.setIndex(jpaDisease.getSearch_index());
                     hasFlag.put(jpaDisease.getId(),1);
@@ -137,6 +140,8 @@ public class DiseaseServiceImpl implements DiseaseService{
                         if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
                         diseaseForSearch.setShowDetail(detail);
                         diseaseForSearch.setIndex(jpaDisease.getSearch_index());
+                        diseaseForSearch.setAlias(jpaDisease.getAlias());
+                        diseaseForSearch.setBodypart(jpaDisease.getBodypart());
                         diseaseForSearch.setTag("症状");
                         hasFlag.put(jpaDisease.getId(),1);
                         diseaseForSearches.add(diseaseForSearch);

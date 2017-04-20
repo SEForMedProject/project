@@ -10,6 +10,6 @@ import java.util.List;
  * Created by ewrfcas on 2017/3/2.
  */
 public interface DoctorRepository extends JpaRepository<JPADoctor,Integer> {
-    @Query(value="select * from tb_doctor where good_at like %?1% or introduction LIKE %?1%" ,nativeQuery=true)
+    @Query(value="select * from tb_doctor where good_at like %?1% or introduction LIKE %?1% ORDER BY rating DESC" ,nativeQuery=true)
     List<JPADoctor> findByContaining(String diseaseName);
 }
