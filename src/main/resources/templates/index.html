@@ -140,29 +140,16 @@
 						<div id="sosearchpro" class="col-sm-7 search-pro">
 							<form method="GET" action="index.html">
 								<div id="search0" class="search input-group">
-									<div class="select_category filter_type icon-select">
-										<select class="no-border" name="category_id">
-											<option value="0">综合</option>
-											<option value="78">Apparel</option>
-											<option value="77">Cables &amp; Connectors</option>
-											<option value="82">Cameras &amp; Photo</option>
-											<option value="80">Flashlights &amp; Lamps</option>
-											<option value="81">Mobile Accessories</option>
-											<option value="79">Video Games</option>
-											<option value="20">Jewelry &amp; Watches</option>
-											<option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
-											<option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
-											<option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
-										</select>
-									</div>
 									<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="搜索" name="search" ng-change="search()" ng-model="diseaseName">
 									<span class="input-group-btn">
 										<button type="submit" class="button-search btn btn-primary" name="submit_search" ng-click="Search"><i class="fa fa-search"></i></button>
 									</span>
 								</div>
-								<div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
-									<a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
+								<div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:630px;left:15px">
+									<a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">
 										<span class="badge">{{item.tag}}</span>
+										<p style="color:green;">疾病名：{{item.diseaseName}}</p>
+										<p style="color:red;" ng-show="item.tag=='症状'">相关症状：{{item.showDetail}}</p>
 									</a>
 								</div>
 								<input type="hidden" name="route" value="product/search"/>

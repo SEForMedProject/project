@@ -69,7 +69,7 @@ public class DiseaseServiceImpl implements DiseaseService{
                             DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
                             diseaseForSearch.setDiseaseId(jpaDisease.getId());
                             diseaseForSearch.setDiseaseName(jpaDisease.getName());
-                            String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
+                            String detail=jpaDisease.getSymptom();
                             if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
                             diseaseForSearch.setAlias(jpaDisease.getAlias());
                             diseaseForSearch.setBodypart(jpaDisease.getBodypart());
@@ -91,7 +91,7 @@ public class DiseaseServiceImpl implements DiseaseService{
                     for(int j=0;j<diseaseName.length();j++){
                         newName+=diseaseName.substring(j,j+1);
                         if(j==diseaseName.length()-1)break;
-                        newName+="%";
+                        newName+="%";//中间加%
                     }
                     List<JPADisease> jpaDiseaseList = diseaseRepository.findAnyWay(newName);
                     if(jpaDiseaseList==null||jpaDiseaseList.size()==0){
@@ -103,7 +103,7 @@ public class DiseaseServiceImpl implements DiseaseService{
                         DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
                         diseaseForSearch.setDiseaseId(jpaDisease.getId());
                         diseaseForSearch.setDiseaseName(jpaDisease.getName());
-                        String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
+                        String detail=jpaDisease.getSymptom();
                         if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
                         diseaseForSearch.setAlias(jpaDisease.getAlias());
                         diseaseForSearch.setBodypart(jpaDisease.getBodypart());
@@ -136,7 +136,7 @@ public class DiseaseServiceImpl implements DiseaseService{
                         DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
                         diseaseForSearch.setDiseaseId(jpaDisease.getId());
                         diseaseForSearch.setDiseaseName(jpaDisease.getName());
-                        String detail=jpaDisease.getSymptom()+"("+jpaDisease.getName()+")";
+                        String detail=jpaDisease.getSymptom();
                         if(detail.length()>50)detail=detail.substring(detail.length()-40,detail.length());
                         diseaseForSearch.setShowDetail(detail);
                         diseaseForSearch.setIndex(jpaDisease.getSearch_index());
