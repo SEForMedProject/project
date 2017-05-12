@@ -122,8 +122,10 @@
 									</span>
                                 </div>
                                 <div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
-                                    <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
+                                    <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null&&diseaseName!=''" ng-click="toDisease($index)">
                                         <span class="badge">{{item.tag}}</span>
+                                        <p style="color:green;">疾病名：{{item.diseaseName}}</p>
+                                        <p style="color:red;" ng-show="item.tag=='症状'">相关症状：{{item.showDetail}}</p>
                                     </a>
                                 </div>
                                 <input type="hidden" name="route" value="product/search"/>

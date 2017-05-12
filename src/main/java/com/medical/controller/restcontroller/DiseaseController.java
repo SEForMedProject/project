@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -30,51 +31,26 @@ public class DiseaseController {
     public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName) {
         Response<List<DiseaseForSearch>> response=new Response<>();
         List<DiseaseForSearch> diseaseForSearches=new ArrayList<>();
-//        if (diseaseName.contains("痛")||(diseaseName.contains("疼"))){
-//            List<DiseaseForSearch> diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName).getData();
-//            if(diseaseForSearches1!=null&&diseaseForSearches1.size()!=0)diseaseForSearches.addAll(diseaseForSearches1);
-//            if(diseaseName.contains("痛")){
-//                diseaseName=diseaseName.replaceAll("痛","疼");
-//            }else{
-//                diseaseName=diseaseName.replaceAll("疼","痛");
-//            }
-//            diseaseForSearches1=diseaseService.getDiseaseByName(diseaseName).getData();
-//            if(diseaseForSearches1!=null&&diseaseForSearches1.size()!=0)diseaseForSearches.addAll(diseaseForSearches1);
-//            Collections.sort(diseaseForSearches, indexSortForDisease);
-//            response.setStatus(ResponseStatus.SUCCESS);
-//            response.setMessage("success");
-//            response.setData(diseaseForSearches);
-//            return response;
-//        }
         String[] diseaseNames=diseaseName.split(" ");
-        if(diseaseNames.length==1){
-            return diseaseService.getDiseaseByName(diseaseName);
-        }
-        List<Response<List<DiseaseForSearch>>> responseList=new ArrayList<>();
-        for (String s: diseaseNames){
+        List<DiseaseForSearch> diseaseForSearchesReal=new ArrayList<>();
+        HashMap<Integer,Integer> hashMap=new HashMap<>();
+        int maxNum=0;
+        for (String s: diseaseNames){//hashmap中统计各疾病在各关键词中出现次数
             Response<List<DiseaseForSearch>> responseTemp=diseaseService.getDiseaseByName(s);
-            responseList.add(responseTemp);
-        }
-        for (DiseaseForSearch diseaseForSearch: responseList.get(0).getData()){
-            boolean flag=false;
-            for (int i=1;i<responseList.size();i++){
-                if(responseList.get(i).getData().contains(diseaseForSearch)){
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag){
-                diseaseForSearches.add(diseaseForSearch);
+            for(DiseaseForSearch diseaseForSearch:responseTemp.getData()){
+                int tempNum=hashMap.getOrDefault(diseaseForSearch.getDiseaseId(),0)+1;
+                hashMap.put(diseaseForSearch.getDiseaseId(),tempNum);
+                if(tempNum>maxNum)maxNum=tempNum;
+                if(tempNum==1)diseaseForSearchesReal.add(diseaseForSearch);
             }
         }
-        if(diseaseForSearches.size()==0){
-            for(int i=0;i<responseList.size();i++){
-                diseaseForSearches.addAll(responseList.get(i).getData());
-            }
+        //判断是否是最大maxnum
+        for(DiseaseForSearch diseaseForSearch:diseaseForSearchesReal){
+            if(hashMap.get(diseaseForSearch.getDiseaseId())==maxNum)diseaseForSearches.add(diseaseForSearch);
         }
         Collections.sort(diseaseForSearches, indexSortForDisease);
         response.setStatus(ResponseStatus.SUCCESS);
-        response.setMessage("success");
+        response.setMessage("疾病信息获取成功");
         response.setData(diseaseForSearches);
         return response;
     }
