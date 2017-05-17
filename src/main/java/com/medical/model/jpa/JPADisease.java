@@ -26,4 +26,5 @@ public class JPADisease {
     private String etiology;
     private String clinical_feature;
     private int search_index;
+    private int search_index_new;
 }

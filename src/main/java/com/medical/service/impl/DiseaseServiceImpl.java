@@ -93,7 +93,7 @@ public class DiseaseServiceImpl implements DiseaseService{
         DiseaseForSearch diseaseForSearch =new DiseaseForSearch();
         diseaseForSearch.setDiseaseId(jpaDisease.getId());
         diseaseForSearch.setDiseaseName(jpaDisease.getName());
-        diseaseForSearch.setIndex(jpaDisease.getSearch_index());
+        diseaseForSearch.setIndex(jpaDisease.getSearch_index_new());
         diseaseForSearch.setAlias(jpaDisease.getAlias());
         diseaseForSearch.setBodypart(jpaDisease.getBodypart());
         if(flag==1){
