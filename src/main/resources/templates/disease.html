@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs
+        ============================================ -->
+    <title>Disease</title>
+    <meta charset="utf-8">
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="ico/favicon.png">
+
+    <!-- Google web fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Libs CSS
+    ============================================ -->
+    <link rel="stylesheet" href="../moban/css/bootstrap/css/bootstrap.min.css">
+    <link href="../moban/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../moban/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="../moban/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="../moban/css/themecss/lib.css" rel="stylesheet">
+    <link href="../moban/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <!--导入angularjs-->
+    <script src="../lib/angular-1.5.5/angular.min.js"></script>
+    <script src="../lib/angular-1.5.5/angular-animate.min.js"></script>
+    <script src="../lib/angular-1.5.5/angular-resource.min.js"></script>
+    <script src="../lib/ui-bootstrap-tpls-1.3.2/ui-bootstrap-tpls-1.3.2.min.js"></script>
+    <script src="../diseaseJs.js"></script>
+
+    <!-- Theme CSS
+    ============================================ -->
+    <link href="../moban/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="../moban/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="../moban/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link id="color_scheme" href="../moban/css/theme.css" rel="stylesheet">
+    <link href="../moban/css/responsive.css" rel="stylesheet">
+</head>
+<body ng-app="medicalApp" ng-controller="diseaseCtrl"  ng-cloak  ng-init="init()" class="common-home res layout-home1" style="overflow-y: scroll">
+    <div id="wrapper" class="wrapper-full banners-effect-7">
+        <!-- Header Container  -->
+        <header id="header" class=" variantleft type_1">
+            <!-- Header Top -->
+            <div class="header-top compact-hidden">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-top-left form-inline col-sm-6 col-xs-12 compact-hidden">
+                            <div class="form-group currencies-block">
+                                <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
+                                    <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        <span class="icon icon-credit "></span> 我是患者<span class="fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu btn-xs">
+                                        <li> <a href="#">&nbsp;我是医生</a></li>
+                                        <li> <a href="#">&nbsp;我是管理员</a></li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header-top-right collapsed-block text-right  col-sm-6 col-xs-12 compact-hidden">
+                            <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
+                            <div class="tabBlock" id="TabBlock-1">
+                                <ul class="top-link list-inline">
+                                    <li class="account" id="my_account">
+                                        <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >请先登陆</span> <span class="fa fa-angle-down"></span></a>
+                                        <ul class="dropdown-menu ">
+                                            <li><a href="register.html"><i class="fa fa-user"></i>注册</a></li>
+                                            <li><a href="login.html"><i class="fa fa-pencil-square-o"></i>登陆</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="wishlist"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span>Wish List (2)</span></a></li>
+                                    <li class="checkout"><a href="#" class="top-link-checkout" title="Checkout"><span >Checkout</span></a></li>
+                                    <li class="login"><a href="#" title="Shopping Cart"><span >Shopping Cart</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //Header Top -->
+
+            <!-- Header center -->
+            <div class="header-center left">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
+                            <a href="#"><img src="../moban/indexForShow/logo.png" title="Your hospital" alt="Your hospital" /></a>
+                        </div>
+                        <!-- //end Logo -->
+                        <!-- Search -->
+                        <div id="sosearchpro" class="col-sm-7 search-pro">
+                            <form method="GET" action="index.html">
+                                <div id="search0" class="search input-group">
+                                    <div class="select_category filter_type icon-select">
+                                        <select class="no-border" name="category_id">
+                                            <option value="0">综合</option>
+                                            <option value="78">Apparel</option>
+                                            <option value="77">Cables &amp; Connectors</option>
+                                            <option value="82">Cameras &amp; Photo</option>
+                                            <option value="80">Flashlights &amp; Lamps</option>
+                                            <option value="81">Mobile Accessories</option>
+                                            <option value="79">Video Games</option>
+                                            <option value="20">Jewelry &amp; Watches</option>
+                                            <option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
+                                            <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
+                                            <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
+                                        </select>
+                                    </div>
+                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="搜索" name="search" ng-change="search()" ng-model="diseaseName">
+                                    <span class="input-group-btn">
+										<button type="submit" class="button-search btn btn-primary" name="submit_search" ng-click="Search"><i class="fa fa-search"></i></button>
+									</span>
+                                </div>
+                                <div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
+                                    <a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null&&diseaseName!=''" ng-click="toDisease($index)">
+                                        <span class="badge">{{item.tag}}</span>
+                                        <p style="color:green;">疾病名：{{item.diseaseName}}</p>
+                                        <p style="color:red;" ng-show="item.tag=='症状'">相关症状：{{item.showDetail}}</p>
+                                    </a>
+                                </div>
+                                <input type="hidden" name="route" value="product/search"/>
+                            </form>
+                        </div>
+                        <!-- //end Search -->
+                        <!-- Secondary menu -->
+                        <div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //Header center -->
+            <!-- Navbar switcher -->
+            <!-- //end Navbar switcher -->
+        </header>
+        <!-- //Header Container  -->
+        <!--导航栏-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">toggle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+                        <a href="##" class="navbar-brand">导航</a>
+                    </div>
+                    <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <ul class="nav navbar-nav">
+                            <li ng-class="{true: 'active', false: 'inactive'}[showDetail]"><a ng-click="showDetail=true;showDoctors=false">疾病简介</a></li>
+                            <li ng-class="{true: 'active', false: 'inactive'}[showDoctors]"><a ng-click="showDetail=false;showDoctors=true">医生推荐</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--疾病介绍-->
+        <div class="row" ng-show="showDetail==true">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h3>疾病名称</h3>
+                <p>{{diseaseDetail.name}}</p>
+                <hr>
+                <h3>别名</h3>
+                <p>{{diseaseDetail.alias}}</p>
+                <hr>
+                <h3>症状</h3>
+                <p>{{diseaseDetail.symptom}}</p>
+                <hr>
+                <h3>发病部位</h3>
+                <p>{{diseaseDetail.bodypart}}</p>
+                <hr>
+                <h3>易感人群</h3>
+                <p>{{diseaseDetail.prone_group}}</p>
+                <hr>
+                <h3>病因</h3>
+                <p>{{diseaseDetail.etiology}}</p>
+            </div>
+        </div>
+        <!--医生推荐-->
+        <div class="row" ng-show="showDoctors==true">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="thumbnail" style="margin: 20px 0px;padding: 10px" ng-repeat="item in showList">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="../moban/doctor/默认.jpg" alt="...">
+                        </div>
+                        <div class="col-md-10">
+                            <h4>{{item.name}}</h4>
+                            <hr>
+                            <p>科室：{{item.department}}</p>
+                            <p>职位：{{item.title}}</p>
+                            <p>擅长：{{item.goodAt}}</p>
+                            <p>简介：{{item.introduction}}</p>
+                        </div>
+                    </div>
+                </div>
+                <uib-pagination
+                        ng-model="currentPage"
+                        items-per-page="itemsPerPage"
+                        total-items="totalItems"
+                        max-size="7"
+                        boundary-links="true"
+                        class="pagination-sm pagination-reset" rotate="false"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="第一页" last-text="最后一页">
+                </uib-pagination>
+            </div>
+        </div>
+        <footer class="footer-container">
+            <!-- Footer Top Container -->
+            <section class="footer-top">
+                <div class="container content">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 box-information">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Information</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Order history</a></li>
+                                        <li><a href="#">Order information</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-service">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Customer Service</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Returns</a></li>
+                                        <li><a href="#">Site Map</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-account">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">My Account</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Brands</a></li>
+                                        <li><a href="#">Gift Vouchers</a></li>
+                                        <li><a href="#">Affiliates</a></li>
+                                        <li><a href="#">Specials</a></li>
+                                        <li><a href="#" target="_blank">Our Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 collapsed-block ">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Contact Us	</h3>
+                                <div class="modcontent">
+                                    <ul class="contact-address">
+                                        <li><span class="fa fa-map-marker"></span> My Company, 2-305</li>
+                                        <li><span class="fa fa-envelope-o"></span> Email: <a href="#"> ccjdurandal422@163.com</a></li>
+                                        <li><span class="fa fa-phone">&nbsp;</span> Phone: 13918377193</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Footer Top Container -->
+
+            <!-- Footer Bottom Container -->
+            <div class="footer-bottom-block ">
+                <div class=" container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.</div>
+                        <div class="col-sm-7">
+                            <div class="block-payment text-right"><img src="../moban/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+                        </div>
+                        <!--Back To Top-->
+                        <div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Footer Bottom Container -->
+        </footer>
+    </div>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../moban/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../moban/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../moban/js/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="../moban/js/themejs/libs.js"></script>
+    <script type="text/javascript" src="../moban/js/unveil/jquery.unveil.js"></script>
+    <script type="text/javascript" src="../moban/js/countdown/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="../moban/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+    <script type="text/javascript" src="../moban/js/datetimepicker/moment.js"></script>
+    <script type="text/javascript" src="../moban/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="../moban/js/jquery-ui/jquery-ui.min.js"></script>
+    <link rel='stylesheet' property='stylesheet'  href='../moban/css/themecss/cpanel.css' type='text/css' media='all' />
+
+    <!-- Theme files
+    ============================================ -->
+    <script type="text/javascript" src="../moban/js/themejs/application.js"></script>
+    <script type="text/javascript" src="../moban/js/themejs/toppanel.js"></script>
+    <script type="text/javascript" src="../moban/js/themejs/so_megamenu.js"></script>
+    <script type="text/javascript" src="../moban/js/themejs/addtocart.js"></script>
+    <script type="text/javascript" src="../moban/js/themejs/cpanel.js"></script>
+</body>
+</html>
