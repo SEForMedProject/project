@@ -23,9 +23,9 @@ public class JPADoctor {
 
     private String title;
 
-    private int hospital_id;
+    private String hospital;
 
-    private int department_id;
+    private String department;
 
     @Column(name = "good_at")
     private String goodAt;

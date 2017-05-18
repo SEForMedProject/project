@@ -30,6 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
                 response.setMessage("未找到该医生");
                 return response;
             }
+<<<<<<< HEAD
             List<Doctor> doctors = new ArrayList<>();
             for (JPADoctor jpaDoctor : jpaDoctors) {
                 Doctor doctor = new Doctor();
@@ -39,6 +40,11 @@ public class DoctorServiceImpl implements DoctorService {
                 doctor.setTitle(jpaDoctor.getTitle());
                 doctor.setIntroduction(jpaDoctor.getIntroduction());
                 doctors.add(doctor);
+=======
+            List<Doctor> doctors=new ArrayList<>();
+            for(JPADoctor jpaDoctor:jpaDoctors){
+                doctors.add(JPAToDoctor(jpaDoctor));
+>>>>>>> dev
             }
             response.setData(doctors);
             response.setStatus(ResponseStatus.SUCCESS);
@@ -49,5 +55,17 @@ public class DoctorServiceImpl implements DoctorService {
             response.setMessage(e.toString());
             return response;
         }
+    }
+
+    //SQLJPA格式转换为前后端通用格式Doctor
+    private Doctor JPAToDoctor(JPADoctor jpaDoctor){
+        Doctor doctor=new Doctor();
+        doctor.setId(jpaDoctor.getId());
+        doctor.setName(jpaDoctor.getName());
+        doctor.setGoodAt(jpaDoctor.getGoodAt());
+        doctor.setTitle(jpaDoctor.getTitle());
+        doctor.setDepartment(jpaDoctor.getDepartment());
+        doctor.setIntroduction(jpaDoctor.getIntroduction());
+        return doctor;
     }
 }

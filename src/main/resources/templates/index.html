@@ -93,28 +93,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="header-top-left form-inline col-sm-6 col-xs-12 compact-hidden">
-							<div class="form-group languages-block ">
-								<form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
-									<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-										<img src="../moban/image/demo/flags/gb.png" alt="English" title="English">
-										<span class="">English</span>
-										<span class="fa fa-angle-down"></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="/"><img class="image_flag" src="../moban/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
-										<li> <a href="/"> <img class="image_flag" src="../moban/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
-									</ul>
-								</form>
-							</div>
 							<div class="form-group currencies-block">
 								<form action="index.html" method="post" enctype="multipart/form-data" id="currency">
 									<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-										<span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
+										<span class="icon icon-credit "></span> 我是患者<span class="fa fa-angle-down"></span>
 									</a>
 									<ul class="dropdown-menu btn-xs">
-										<li> <a href="#">(€)&nbsp;Euro</a></li>
-										<li> <a href="#">(£)&nbsp;Pounds	</a></li>
-										<li> <a href="#">($)&nbsp;US Dollar	</a></li>
+										<li> <a href="#">&nbsp;我是医生</a></li>
+										<li> <a href="#">&nbsp;我是管理员</a></li>
 									</ul>
 								</form>
 							</div>
@@ -124,10 +110,10 @@
 							<div class="tabBlock" id="TabBlock-1">
 								<ul class="top-link list-inline">
 									<li class="account" id="my_account">
-										<a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >My Account</span> <span class="fa fa-angle-down"></span></a>
+										<a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >请先登陆</span> <span class="fa fa-angle-down"></span></a>
 										<ul class="dropdown-menu ">
-											<li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-											<li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+											<li><a href="register.html"><i class="fa fa-user"></i>注册</a></li>
+											<li><a href="login.html"><i class="fa fa-pencil-square-o"></i>登陆</a></li>
 										</ul>
 									</li>
 									<li class="wishlist"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span>Wish List (2)</span></a></li>
@@ -154,114 +140,24 @@
 						<div id="sosearchpro" class="col-sm-7 search-pro">
 							<form method="GET" action="index.html">
 								<div id="search0" class="search input-group">
-									<div class="select_category filter_type icon-select">
-										<select class="no-border" name="category_id">
-											<option value="0">综合</option>
-											<option value="78">Apparel</option>
-											<option value="77">Cables &amp; Connectors</option>
-											<option value="82">Cameras &amp; Photo</option>
-											<option value="80">Flashlights &amp; Lamps</option>
-											<option value="81">Mobile Accessories</option>
-											<option value="79">Video Games</option>
-											<option value="20">Jewelry &amp; Watches</option>
-											<option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
-											<option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
-											<option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
-										</select>
-									</div>
-									<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search" name="search" ng-change="search()" ng-model="diseaseName">
+									<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="搜索" name="search" ng-change="search()" ng-model="diseaseName">
 									<span class="input-group-btn">
 										<button type="submit" class="button-search btn btn-primary" name="submit_search" ng-click="Search"><i class="fa fa-search"></i></button>
 									</span>
 								</div>
-								<div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:462.4px;left: 184px">
-									<a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null" ng-click="toDisease($index)">{{item.showDetail}}
+								<div class="list-group  pre-scrollable" style="position:absolute;z-index: 9999;width:630px;left:15px">
+									<a style="cursor:pointer" class="list-group-item" ng-repeat="item in diseaseList" ng-show="diseaseList!=null&&diseaseName!=''" ng-click="toDisease($index)">
 										<span class="badge">{{item.tag}}</span>
+										<p style="color:green;">疾病名：{{item.diseaseName}}</p>
+										<p style="color:red;" ng-show="item.tag=='症状'">相关症状：{{item.showDetail}}</p>
 									</a>
 								</div>
 								<input type="hidden" name="route" value="product/search"/>
 							</form>
 						</div>
 						<!-- //end Search -->
-
 						<!-- Secondary menu -->
 						<div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
-							<!--cart-->
-							<div id="cart" class=" btn-group btn-shopping-cart">
-								<a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
-									<div class="shopcart">
-										<span class="handle pull-left"></span>
-										<span class="title">My cart</span>
-										<p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
-									</div>
-								</a>
-								<ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
-									<li>
-										<table class="table table-striped">
-											<tbody>
-												<tr>
-													<td class="text-center" style="width:70px">
-														<a href="product.html"> <img src="../moban/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
-													</td>
-													<td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
-													<td class="text-center"> x1 </td>
-													<td class="text-center"> $1,202.00 </td>
-													<td class="text-right">
-														<a href="product.html" class="fa fa-edit"></a>
-													</td>
-													<td class="text-right">
-														<a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center" style="width:70px">
-														<a href="product.html"> <img src="../moban/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
-													</td>
-													<td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
-													<td class="text-center"> x1 </td>
-													<td class="text-center"> $60.00 </td>
-													<td class="text-right">
-														<a href="product.html" class="fa fa-edit"></a>
-													</td>
-													<td class="text-right">
-														<a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</li>
-									<li>
-										<div>
-											<table class="table table-bordered">
-												<tbody>
-													<tr>
-														<td class="text-left"><strong>Sub-Total</strong>
-														</td>
-														<td class="text-right">$1,060.00</td>
-													</tr>
-													<tr>
-														<td class="text-left"><strong>Eco Tax (-2.00)</strong>
-														</td>
-														<td class="text-right">$2.00</td>
-													</tr>
-													<tr>
-														<td class="text-left"><strong>VAT (20%)</strong>
-														</td>
-														<td class="text-right">$200.00</td>
-													</tr>
-													<tr>
-														<td class="text-left"><strong>Total</strong>
-														</td>
-														<td class="text-right">$1,262.00</td>
-													</tr>
-												</tbody>
-											</table>
-											<p class="text-right"> <a class="btn view-cart" href="#"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="#"><i class="fa fa-share"></i>Checkout</a> </p>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<!--//cart-->
 						</div>
 					</div>
 				</div>
@@ -310,7 +206,7 @@
 																	<b class="caret"></b>
 																</a>
 
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="45" >
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -321,21 +217,20 @@
 																								<li>
 																									<a href="#" class="main-menu">普通外科</a>
 																									<ul>
-																										<li><a href="/disease?diseaseId=260" target="_blank">消化道出血</a></li>
-																										<li><a href="/disease?diseaseId=603" target="_blank">阑尾炎</a></li>
-																										<li><a href="/disease?diseaseId=312" target="_blank">疝气</a></li>
-																										<li><a href="/disease?diseaseId=203" target="_blank">腹股沟疝</a></li>
+																										<li><a href="/disease?diseaseId=3887" target="_blank">消化道出血</a></li>
+																										<li><a href="/disease?diseaseId=1321" target="_blank">阑尾炎</a></li>
+																										<li><a href="/disease?diseaseId=1396" target="_blank">疝气</a></li>
+																										<li><a href="/disease?diseaseId=1400" target="_blank">腹股沟疝</a></li>
 																									</ul>
 																								</li>
 																								<li>
 																									<a href="#" class="main-menu">神经外科</a>
 																									<ul>
-																										<li><a href="/disease?diseaseId=354" target="_blank">脑出血</a></li>
-																										<li><a href="/disease?diseaseId=497" target="_blank">三叉神经痛</a></li>
-																										<li><a href="/disease?diseaseId=386" target="_blank">脑外伤</a></li>
-																										<li><a href="/disease?diseaseId=324" target="_blank">脑积水</a></li>
-																										<li><a href="/disease?diseaseId=538" target="_blank">面肌痉挛</a></li>
-																										<li><a href="/disease?diseaseId=732" target="_blank">半身不遂</a></li>
+																										<li><a href="/disease?diseaseId=2284" target="_blank">高血压性脑出血</a></li>
+																										<li><a href="/disease?diseaseId=5827" target="_blank">三叉神经痛</a></li>
+																										<li><a href="/disease?diseaseId=5813" target="_blank">开放性脑外伤</a></li>
+																										<li><a href="/disease?diseaseId=5414" target="_blank">先天性脑积水</a></li>
+																										<li><a href="/disease?diseaseId=5890" target="_blank">面肌痉挛</a></li>
 																									</ul>
 																								</li>
 																							</ul>
@@ -347,49 +242,23 @@
 																								<li>
 																									<a href="#"  class="main-menu">心血管外科</a>
 																									<ul>
-																										<li><a href="/disease?diseaseId=287" target="_blank">室间隔缺损</a></li>
-																										<li><a href="/disease?diseaseId=17" target="_blank">心脏瓣膜病</a></li>
-																										<li><a href="/disease?diseaseId=60" target="_blank">心肌梗死</a></li>
-																										<li><a href="/disease?diseaseId=62" target="_blank">心绞痛</a></li>
+																										<li><a href="/disease?diseaseId=1619" target="_blank">心脏瓣膜病</a></li>
 																									</ul>
 																								</li>
-																								<li>
-																									<a href="#"  class="main-menu">胸外科</a>
-																									<ul>
-																										<li><a href="/disease?diseaseId=420" target="_blank">漏斗胸</a></li>
-																										<li><a href="/disease?diseaseId=652" target="_blank">气胸</a></li>
-																									</ul>
-																								</li>
-																							</ul>
-																						</div>
-																					</div>
-																					<div class="col-md-4 static-menu">
-																						<div class="menu">
-																							<ul>
 																								<li>
 																									<a href="#" class="main-menu">泌尿外科</a>
 																									<ul>
-																										<li><a href="/disease?diseaseId=373" target="_blank">尿毒症</a></li>
-																										<li><a href="/disease?diseaseId=180" target="_blank">肾积水</a></li>
-																										<li><a href="/disease?diseaseId=173" target="_blank">肾囊肿</a></li>
-																										<li><a href="/disease?diseaseId=179" target="_blank">肾结石</a></li>
-																										<li><a href="/disease?diseaseId=623" target="_blank">输尿管结石</a></li>
-																										<li><a href="/disease?diseaseId=334" target="_blank">膀胱结石</a></li>
-																										<li><a href="/disease?diseaseId=169" target="_blank">尿道下裂</a></li>
-																									</ul>
-																								</li>
-																								<li>
-																									<a href="#" class="main-menu">乳腺科</a>
-																									<ul>
-																										<li><a href="/disease?diseaseId=152" target="_blank">乳腺增生</a></li>
-																										<li><a href="/disease?diseaseId=444" target="_blank">乳腺炎</a></li>
-																										<li><a href="/disease?diseaseId=654" target="_blank">乳腺囊肿</a></li>
+																										<li><a href="/disease?diseaseId=4307" target="_blank">肾积水</a></li>
+																										<li><a href="/disease?diseaseId=4736" target="_blank">肾囊肿</a></li>
+																										<li><a href="/disease?diseaseId=4722" target="_blank">肾结石</a></li>
+																										<li><a href="/disease?diseaseId=3363" target="_blank">输尿管结石</a></li>
+																										<li><a href="/disease?diseaseId=3814" target="_blank">膀胱结石</a></li>
+																										<li><a href="/disease?diseaseId=3713" target="_blank">尿道下裂</a></li>
 																									</ul>
 																								</li>
 																							</ul>
 																						</div>
 																					</div>
-
 																				</div>
 																			</div>
 																		</div>
@@ -403,7 +272,7 @@
 																	<span>内科(普通内科 | 呼吸内科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="65" style="position: absolute;left: 270px;top: -45px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -537,7 +406,7 @@
 																	<span>五官科(耳鼻喉科 | 眼科 | 口腔科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="65" style="position: absolute;left: 270px;top: -88px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -625,12 +494,12 @@
 																	<span>妇产科(妇科 | 产科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="25" style="position: absolute;left: 270px;top: -132px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
 																				<div class="row">
-																					<div class="col-md-4 static-menu">
+																					<div class="col-md-12 static-menu">
 																						<div class="menu">
 																							<ul>
 																								<li>
@@ -672,7 +541,7 @@
 																	<span>儿科(小儿内科 | 小儿神经内科 |小儿外科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="65" style="position: absolute;left: 270px;top: -175px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -761,7 +630,7 @@
 																	<span>骨科(普通骨科 | 创伤外科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="65" style="position: absolute;left: 270px;top: -243px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -842,7 +711,7 @@
 																	<span>肿瘤科(五官科肿瘤 | 心脑血管肿瘤)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="65" >
+																<div class="sub-menu" data-subwidth="65" style="position: absolute;left: 270px;top: -290px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
@@ -918,12 +787,12 @@
 																	<span>传染科(传染科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="50" >
+																<div class="sub-menu" data-subwidth="20" style="position: absolute;left: 270px;top: -333px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
 																				<div class="row">
-																					<div class="col-md-4 static-menu">
+																					<div class="col-md-12 static-menu">
 																						<div class="menu">
 																							<ul>
 																								<li>
@@ -959,12 +828,12 @@
 																	<span>男科(男科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="50" >
+																<div class="sub-menu" data-subwidth="20" style="position: absolute;left: 270px;top: -378px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
 																				<div class="row">
-																					<div class="col-md-4 static-menu">
+																					<div class="col-md-12 static-menu">
 																						<div class="menu">
 																							<ul>
 																								<li>
@@ -1004,12 +873,12 @@
 																	<span>皮肤性病科(皮肤科 | 性病科)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="50" >
+																<div class="sub-menu" data-subwidth="40" style="position: absolute;left: 270px;top: -422px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
 																				<div class="row">
-																					<div class="col-md-4 static-menu">
+																					<div class="col-md-6 static-menu">
 																						<div class="menu">
 																							<ul>
 																								<li>
@@ -1064,12 +933,12 @@
 																	<span>心理健康(精神疾病)</span>
 																	<b class="caret"></b>
 																</a>
-																<div class="sub-menu" data-subwidth="45" >
+																<div class="sub-menu" data-subwidth="20" style="position: absolute;left: 270px;top: -466px;">
 																	<div class="content" >
 																		<div class="row">
 																			<div class="col-md-12">
 																				<div class="row">
-																					<div class="col-md-4 static-menu">
+																					<div class="col-md-12 static-menu">
 																						<div class="menu">
 																							<ul>
 																								<li>
@@ -1145,7 +1014,7 @@
 												<div class="container">
 													<ul class="megamenu " data-transition="slide" data-animationtime="250">
 														<li class="home hover">
-															<a href="index.html">Home <b class="caret"></b></a>
+															<a href="#">在线问诊 <b class="caret"></b></a>
 															<div class="sub-menu" style="width:100%;" >
 																<div class="content" >
 																	<div class="row">
@@ -1192,7 +1061,7 @@
 														<li class="with-sub-menu hover">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Features</strong>
+																<strong>预约挂号</strong>
 																<span class="label"> Hot</span>
 																<b class="caret"></b>
 															</a>
@@ -1260,7 +1129,7 @@
 														<li class="with-sub-menu hover">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Pages</strong>
+																<strong>手术中心</strong>
 																<span class="label"> Hot</span>
 																<b class="caret"></b>
 															</a>
@@ -1291,7 +1160,7 @@
 														<li class="with-sub-menu hover">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Categories</strong>
+																<strong>专家团队</strong>
 																<span class="label"></span>
 																<b class="caret"></b>
 															</a>
@@ -1382,7 +1251,7 @@
 														<li class="with-sub-menu hover">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Accessories</strong>
+																<strong>购药专线</strong>
 																<b class="caret"></b>
 															</a>
 															<div class="sub-menu" style="width: 100%; display: none;">
@@ -1503,14 +1372,14 @@
 														<li class="">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Blog</strong>
+																<strong>官方微博</strong>
 																<span class="label"></span>
 															</a>
 														</li>
 														<li class="hidden-md">
 															<p class="close-menu"></p>
 															<a href="#" class="clearfix">
-																<strong>Buy Theme!</strong>
+																<strong>官方论坛</strong>
 															</a>
 														</li>
 													</ul>
@@ -1522,7 +1391,6 @@
 							</div>
 						</div>
 						<!-- //end Main menu -->
-
 					</div>
 				</div>
 			</div>
@@ -1582,10 +1450,10 @@
 								<div class="modcontent clearfix">
 									<div class="policy-detail">
 										<div class="banner-policy">
-											<div class="policy policy1"><a href="#"> <span class="ico-policy">&nbsp;</span> 90 day <br> money back </a></div>
-											<div class="policy policy2"><a href="#"> <span class="ico-policy">&nbsp;</span> In-store exchange </a></div>
-											<div class="policy policy3"><a href="#"> <span class="ico-policy">&nbsp;</span> lowest price guarantee </a></div>
-											<div class="policy policy4"><a href="#"> <span class="ico-policy">&nbsp;</span> shopping guarantee </a></div>
+											<div class="policy policy1"><a href="#"> <span class="ico-policy">&nbsp;</span> 优惠挂号 <br> 返现10% </a></div>
+											<div class="policy policy2"><a href="#"> <span class="ico-policy">&nbsp;</span> 专业急诊 </a></div>
+											<div class="policy policy3"><a href="#"> <span class="ico-policy">&nbsp;</span> 提前预约 </a></div>
+											<div class="policy policy4"><a href="#"> <span class="ico-policy">&nbsp;</span> 专家咨询热线 </a></div>
 										</div>
 									</div>
 								</div>
@@ -1595,606 +1463,6 @@
 				</div>
 			</div>
 		</section>
-
-		<div class="main-container container">
-			<div class="row">
-				<div id="content" class="col-sm-12">
-					<div class="module tab-slider titleLine">
-						<h3 class="modtitle">Featured Product</h3>
-						<div id="so_listing_tabs_1" class="so-listing-tabs first-load module">
-							<div class="loadeding"></div>
-							<div class="ltabs-wrap">
-								<div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="#" data-type_source="0">
-									<!--Begin Tabs-->
-									<div class="ltabs-tabs-wrap">
-										<span class="ltabs-tab-selected">Jewelry &amp; Watches	</span> <span class="ltabs-tab-arrow">▼</span>
-										<div class="item-sub-cat">
-											<ul class="ltabs-tabs cf">
-												<li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"> <span class="ltabs-tab-label">Jewelry &amp; Watches						</span> </li>
-												<li class="ltabs-tab " data-category-id="18" data-active-content=".items-category-18"> <span class="ltabs-tab-label">Electronics		</span> </li>
-												<li class="ltabs-tab " data-category-id="25" data-active-content=".items-category-25"> <span class="ltabs-tab-label">Sports &amp; Outdoors	</span> </li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Tabs-->
-								</div>
-								<div class="ltabs-items-container">
-									<!--Begin Items-->
-									<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
-										<div class="ltabs-items-inner ltabs-slider ">
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/J9.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/J5.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Cupim Bris</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$50.00</span>
-																<span class="price-old">$62.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/m1.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/m3.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--New Label-->
-														<span class="label label-new">New</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Cisi Chicken	</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$59.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/B10.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/B9.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Bint Beef</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$97.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/w1.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/w10.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Dail Lulpa</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$97.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/B5.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/B10.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Et Spare</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$65.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="ltabs-items items-category-18 grid" data-total="11">
-										<div class="ltabs-items-inner ltabs-slider ">
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/e11.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/E3.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Apple Cinema 30"</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$50.00</span>
-																<span class="price-old">$62.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/141.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/11.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html"> Canon EOS 5D</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$60.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/35.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/34.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Filet Mign</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$97.00</span>
-																<span class="price-old">$122.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/E3_1.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/E3_3.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">HP LP3065</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$60.00</span>
-																<span class="price-old">$100.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/e11.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/E3.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Apple Cinema 30"</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$50.00</span>
-																<span class="price-old">$62.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="ltabs-items  items-category-25 grid" data-total="11">
-										<div class="ltabs-items-inner ltabs-slider ">
-
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/141.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/11.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html"> Dail Lulpa</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$78.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/B10.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/B9.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Bint Beef</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$97.00</span>
-																<span class="price-old">$122.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/w1.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/w10.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-														<!--Sale Label-->
-														<span class="label label-sale">Sale</span>
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Beef Bint</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$90.00</span>
-																<span class="price-old">$100.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-											<div class="ltabs-item product-layout">
-												<div class="product-item-container">
-													<div class="left-block">
-														<div class="product-image-container second_img ">
-															<img src="../moban/image/demo/shop/product/B5.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-															<img src="../moban/image/demo/shop/product/B10.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-														</div>
-
-														<!--full quick view block-->
-														<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="#">  Quickview</a>
-														<!--end full quick view block-->
-													</div>
-													<div class="right-block">
-														<div class="caption">
-															<h4><a href="product.html">Bint Beef</a></h4>
-															<div class="ratings">
-																<div class="rating-box">
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																	<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-																</div>
-															</div>
-
-															<div class="price">
-																<span class="price-new">$97.00</span>
-															</div>
-														</div>
-
-														<div class="button-group">
-															<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-															<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-															<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-														</div>
-													</div><!-- right block -->
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<!--End Items-->
-
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Footer Container -->
 		<footer class="footer-container">
