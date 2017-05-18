@@ -16,10 +16,11 @@ import java.util.List;
 @SuppressWarnings("unused")
 @RestController
 public class DoctorController {
+
     @Autowired
     private transient DoctorService doctorService;
 
-    @RequestMapping(value="/doctor/getDoctorByDiseaseName" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/doctor/getDoctorByDiseaseName", method = RequestMethod.GET)
     public Response<List<Doctor>> getDoctorByDiseaseName(String diseaseName) {
         return doctorService.getDoctorByDiseaseName(diseaseName);
     }

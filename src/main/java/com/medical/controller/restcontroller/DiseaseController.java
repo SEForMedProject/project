@@ -17,16 +17,17 @@ import java.util.List;
 @SuppressWarnings("unused")
 @RestController
 public class DiseaseController {
+
     @Autowired
     private transient DiseaseService diseaseService;
 
-    @RequestMapping(value="/search/getDiseaseByName" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/search/getDiseaseByName", method = RequestMethod.GET)
     public Response<List<DiseaseForSearch>> getDiseaseByName(String diseaseName) {
         return diseaseService.getDiseaseByName(diseaseName);
     }
 
     @RequestMapping(value = "/disease/getDiseaseDetailById", method = RequestMethod.GET)
-    public Response<JPADisease> getDiseaseDetailById(int diseaseId){
+    public Response<JPADisease> getDiseaseDetailById(int diseaseId) {
         return diseaseService.getDiseaseDetailById(diseaseId);
     }
 }

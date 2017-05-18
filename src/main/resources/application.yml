@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://172.20.45.88:3306/db_qiuyi?characterEncoding=utf-8
-    username: medicalteam
-    password: medicalteam_2017
+    url: jdbc:mysql://localhost:3306/db_quiyi?characterEncoding=utf-8
+    username: root
+    password: 605160
 #    url: jdbc:mysql://localhost:3306/db_qiuyi?characterEncoding=utf-8
 #    username: root
 #    password: 10189363
@@ -33,7 +33,14 @@ spring:
     cache: false
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  redis:
+    password: gsj
+    host: localhost
+    port: 6379
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 ribbon:
   ConnectTimeout: 5000
   ReadTimeout: 60000
+
